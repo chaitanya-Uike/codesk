@@ -6,12 +6,12 @@
 
 #codeEditor {
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
-    bottom: 0;
+    bottom: 29.6px;
     left: 0;
     font-family: monospace !important;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .ace_content {
@@ -32,4 +32,128 @@
 
 .ace_gutter-layer {
     background-color: #262730 !important;
+}
+
+
+.code-editor-toolbar {
+    height: 50px;
+    padding: 0 10px;
+    background-color: #37373b;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.mode-selector {
+    position: relative;
+    display: flex;
+    width: 110px;
+    height: fit-content;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: rgb(193, 193, 193);
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+.mode-selector svg {
+    position: absolute;
+    width: 18px;
+    right: 10px;
+}
+
+.mode-selector .stroke {
+    stroke: rgb(193, 193, 193);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    transition: color 0.3s ease-in-out;
+}
+
+.mode-selector .label {
+    transition: color 0.3s ease-in-out;
+}
+
+.mode-selector:hover .label {
+    color: gray;
+}
+
+.mode-selector:hover .stroke {
+    stroke: #9ADCC2;
+}
+
+.mode-selector .options {
+    position: absolute;
+    top: 45px;
+    left: -1px;
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 112px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #3E3F42;
+    z-index: 1;
+}
+
+.show-options {
+    display: flex !important;
+}
+
+.mode-selector .options .option {
+    transition: color 0.3s ease-in-out;
+}
+
+.mode-selector .options .option:hover {
+    color: gray;
+}
+
+.run-code-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 9px 15px;
+    border-radius: 5px;
+    background-color: #0D6870;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.run-code-btn:hover {
+    background-color: #21858f;
+}
+
+.editor-footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #37373b;
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 5;
+}
+
+.word-wrap-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
+    font-size: 12px;
+    color: gray;
+    border-radius: 5px;
+    padding: 3px 5px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: background-color 0.3s ease-in-out;
+    caret-color: transparent;
+}
+
+.word-wrap-btn:hover {
+    background-color: #202020;
+}
+
+.word-wrap-active {
+    background-color: #202020;
 }

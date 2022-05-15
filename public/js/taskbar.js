@@ -182,4 +182,27 @@ const textEditorBody = `
 </div>
 <div id="textEditor"></div>`
 
-const codeEditorBody = `<div id="codeEditor"></div>`
+const codeEditorBody = `        
+<div class="code-editor-toolbar">
+    <div class="mode-selector" title="language mode">
+        <span class="label">JavaScript</span>
+        <svg viewBox="0 0 18 18">
+            <polygon class="stroke" points="7 11 9 13 11 11 7 11"></polygon>
+            <polygon class="stroke" points="7 7 9 5 11 7 7 7"></polygon>
+        </svg>
+        <div class="options">
+            <div class="option" data-value="javascript">JavaScript</div>
+            <div class="option" data-value="c_cpp">C++</div>
+            <div class="option" data-value="java">Java</div>
+            <div class="option" data-value="python">Python</div>
+            <div class="option" data-value="csharp">c#</div>
+        </div>
+    </div>
+    <div class="run-code-btn">RUN</div>
+</div>
+<div class="editor-body">
+    <div id="codeEditor"></div>
+</div>
+<div class="editor-footer">
+    <div class="word-wrap-btn">word wrap</div>
+</div>`

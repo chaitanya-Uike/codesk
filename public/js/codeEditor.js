@@ -48,6 +48,7 @@ function initialiseAce(doc) {
         enableBasicAutocompletion: true,
         enableLiveAutocompletion: true,
         autoScrollEditorIntoView: true,
+        indentedSoftWrap: false,
     })
 
     const Session = editor.getSession()
@@ -190,6 +191,47 @@ function initialiseAce(doc) {
 
         return selectedRanges;
     }
+
+    // language selection
+    const modeSelector = document.querySelector('.mode-selector')
+    const options = modeSelector.querySelector('.options')
+    modeSelector.addEventListener('click', (e) => {
+        if (e.target && e.target.matches('.option')) {
+            modeSelector.querySelector('.label').textContent = e.target.innerHTML
+            const mode = e.target.getAttribute('data-value')
+            editor.session.setMode(`ace/mode/${mode}`)
+        }
+
+        if (options.classList.contains('show-options')) {
+            options.classList.remove('show-options')
+        }
+        else {
+            options.classList.add('show-options')
+        }
+    })
+
+    document.addEventListener('click', (e) => {
+        if (!options.classList.contains('show-options'))
+            return
+
+        if (e.target && !e.target.matches('.mode-selector, .mode-selector > *, .options .options > *')) {
+            options.classList.remove('show-options')
+        }
+    })
+
+    // word wrap toggle
+    const wordWrapBtn = document.querySelector('.word-wrap-btn')
+
+    wordWrapBtn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('word-wrap-active')) {
+            e.target.classList.remove('word-wrap-active')
+            editor.setOption('wrap', false)
+        }
+        else {
+            e.target.classList.add('word-wrap-active')
+            editor.setOption('wrap', true)
+        }
+    })
 
     return editor
 }
