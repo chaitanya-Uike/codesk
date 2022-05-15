@@ -1,0 +1,86 @@
+.ace-multi-cursor {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.ace-multi-caret {
+  position: absolute;
+  border-radius: 3px;
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    height: 0%;
+    top: 50%;
+  }
+
+  to {
+    height: 100%;
+    top: 0%;
+  }
+}
+
+.ace-multi-cursor-tooltip {
+  position: absolute;
+  white-space: nowrap;
+  color: #272822;
+  opacity: 0;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 11px;
+  padding: 4px 6px;
+  border-radius: 0 3px 3px 0;
+  font-family: Helvetica, Arial, sans-serif;
+
+  transition: opacity 0.5s ease-out;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -ms-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+}
+
+
+
+.ace-multi-selection {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 10;
+  opacity: 0.3;
+}
+
+.ace-radar-view {
+  position: relative;
+  min-width: 6px;
+}
+
+.ace-radar-view-scroll-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  border-style: double;
+  border-width: 3px;
+}
+
+.ace-radar-view-cursor-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.ace-radar-view-wrapper {
+  position: relative;
+  float: left;
+
+  height: 100%;
+  width: 6px;
+
+  margin-right: 4px;
+}

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#codeEditor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: monospace !important;
+    font-size: 22px;
+}
+
+.ace_content {
+    background-color: #1D1E24 !important;
+}
+
+.ace_scroller {
+    background-color: #1D1E24 !important;
+}
+
+.ace_active-line {
+    background-color: #262730 !important;
+}
+
+.ace_gutter-active-line {
+    background-color: #2d2f39 !important;
+}
+
+.ace_gutter-layer {
+    background-color: #262730 !important;
+}

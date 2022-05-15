@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>room</title>
+
+    <script>
+        const ROOM_ID = "<%=roomId%>"
+    </script>
+
+    <!-- snap layouts -->
+    <link rel="stylesheet" href="css/snapLayout.css">
+    <script src="js/snapLayout.js"></script>
+
+    <!-- text-Editor -->
+    <link href="quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/text_editor.css">
+
+    <!-- code editor -->
+    <link rel="stylesheet" href="css/code_editor.css">
+    <link rel="stylesheet" href="css/ace-collab-ext.css">
+</head>
+
+<body>
+    <div class="wrapper"></div>
+
+    <div class="taskbar">
+        <div class="icon-wrapper" id="Text-Editor-icon">
+            <div class="window-icon textEditorIcon"></div>
+            <div class="status"></div>
+        </div>
+        <div class="icon-wrapper" id="Code-Editor-icon">
+            <div class="window-icon codeEditorIcon"></div>
+            <div class="status"></div>
+        </div>
+        <div class="icon-wrapper" id="WhiteBoard-icon">
+            <div class="window-icon whiteboardIcon"></div>
+            <div class="status"></div>
+        </div>
+        <div class="icon-wrapper" id="Video-stream-icon">
+            <div class="window-icon videoStreamIcon"></div>
+            <div class="status"></div>
+        </div>
+    </div>
+</body>
+<script src="js/desk.js"></script>
+<script src="src-noconflict/ace.js"></script>
+<script src="src-noconflict/ext-language_tools.js"></script>
+<script src="js/dist/ace-collab-ext.js"></script>
+<script src="js/dist/textEditor.js"></script>
+<script src="js/dist/codeEditor.js"></script>
+<script type="module" src="js/taskbar.js"></script>
+
+</html>
