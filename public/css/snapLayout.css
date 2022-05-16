@@ -110,24 +110,15 @@ body {
 
 .draggable-div {
     position: absolute;
-
-    display: grid;
-    grid-template-rows: auto 1fr;
-
     background-color: #1D1E24 !important;
-
     border-radius: 5px;
-
     box-sizing: border-box;
-
     border: 1px solid lightgray;
-
-    overflow-y: auto;
 }
 
 .resizable {
     resize: both;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .animation {
@@ -163,6 +154,8 @@ body {
 
 .body {
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .active {

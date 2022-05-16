@@ -136,12 +136,14 @@
 /* editor styling */
 
 #textEditor {
-    height: calc(100% - 70px);
+    height: calc(100% - 130px);
+    overflow: auto;
 }
 
 #textEditor .ql-editor {
     width: 100%;
     padding: 40px;
+    padding-bottom: 0;
     background-color: #1D1E24;
     font-size: 22px;
     font-family: Arial;
@@ -325,7 +327,7 @@
 }
 
 /* text selection styling */
-.editor-wrapper ::selection {
+#textEditor ::selection {
     background: #9ADCC2;
     color: black;
 }

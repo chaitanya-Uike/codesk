@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+#Code-Editor {
+    display: flex;
+    flex-direction: column;
+}
+
 #Code-Editor-body {
     display: flex;
     flex-direction: column;
