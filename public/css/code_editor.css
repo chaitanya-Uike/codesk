@@ -54,7 +54,7 @@
 .code-editor-toolbar {
     height: 50px;
     padding: 0 10px;
-    background-color: #37373b;
+    background-color: #262730;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -67,8 +67,7 @@
     height: fit-content;
     padding: 10px 10px;
     border-radius: 5px;
-    background-color: #3E3F42;
-    color: rgb(193, 193, 193);
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
 }
@@ -110,7 +109,7 @@
     padding: 15px 10px;
     border-radius: 5px;
     color: white;
-    background-color: #3E3F42;
+    background-color: #262730;
     z-index: 1;
 }
 
@@ -144,7 +143,7 @@
 
 .editor-footer {
     position: relative;
-    background-color: #37373b;
+    background-color: #262730;
     width: 100%;
     padding: 5px 0;
     display: flex;
@@ -172,7 +171,7 @@
     border-radius: 5px;
     padding: 3px 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .terminal-open-btn {
@@ -184,23 +183,25 @@
 }
 
 .footer-btn:hover {
-    background-color: #222222;
+    background-color: #5b5b5b;
+    color: rgb(202, 202, 202);
 }
 
 .terminal-active {
-    background-color: #222222;
-    ;
+    background-color: #5b5b5b;
+    color: rgb(202, 202, 202);
 }
 
 .word-wrap-active {
-    background-color: #222222;
+    background-color: #5b5b5b;
+    color: rgb(202, 202, 202);
 }
 
 .terminal-container {
     position: relative;
     height: 50%;
     min-height: 150px;
-    background-color: #343538;
+    background-color: #262730;
     border-radius: 5px;
     margin: 5px;
     display: none;
