@@ -191,11 +191,11 @@ const codeEditorBody = `
             <polygon class="stroke" points="7 7 9 5 11 7 7 7"></polygon>
         </svg>
         <div class="options">
-            <div class="option" data-value="javascript">JavaScript</div>
-            <div class="option" data-value="c_cpp">C++</div>
-            <div class="option" data-value="java">Java</div>
-            <div class="option" data-value="python">Python</div>
-            <div class="option" data-value="csharp">c#</div>
+            <div class="option" mode="javascript" lang="javascript">JavaScript</div>
+            <div class="option" mode="c_cpp" lang="c++">C++</div>
+            <div class="option" mode="java" lang="java">Java</div>
+            <div class="option" mode="python" lang="python">Python</div>
+            <div class="option" mode="csharp" lang="csharp">c#</div>
         </div>
     </div>
     <div class="run-code-btn">RUN</div>
@@ -211,10 +211,24 @@ const codeEditorBody = `
     <i class="material-icons">close</i>
     </div>
 </div>
-<div class="output-div terminal-content"></div>
+<div class="output-div terminal-content show-terminal"></div>
 <textarea class="input-div terminal-content" placeholder="input goes here"></textarea>
 </div>
 <div class="editor-footer">
+    <div id="terminal-spinner" class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <div class="terminal-open-btn footer-btn">TERMINAL</div>
     <div class="word-wrap-btn footer-btn">WORD WRAP</div>
 </div>`

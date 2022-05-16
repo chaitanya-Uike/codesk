@@ -51,6 +51,18 @@ function initialiseAce(doc) {
         indentedSoftWrap: false,
     })
 
+    // piston api setup
+    let runtimes = {}
+
+    async function init() {
+        const runtimeRes = await getRuntimes();
+        runtimeRes.forEach(element => {
+            runtimes[element.language] = element.version;
+        });
+    }
+
+    init()
+
     const Session = editor.getSession()
     const aceDoc = Session.getDocument()
 
@@ -195,11 +207,13 @@ function initialiseAce(doc) {
     // language selection
     const modeSelector = document.querySelector('.mode-selector')
     const options = modeSelector.querySelector('.options')
+    let language = 'javascript'
     modeSelector.addEventListener('click', (e) => {
         if (e.target && e.target.matches('.option')) {
             modeSelector.querySelector('.label').textContent = e.target.innerHTML
-            const mode = e.target.getAttribute('data-value')
+            const mode = e.target.getAttribute('mode')
             editor.session.setMode(`ace/mode/${mode}`)
+            language = e.target.getAttribute('lang')
         }
 
         if (options.classList.contains('show-options')) {
@@ -284,7 +298,74 @@ function initialiseAce(doc) {
         resizeAceEditor()
     })
 
+    // run code
+    const runBtn = document.querySelector('.run-code-btn')
+    runBtn.addEventListener('click', runCode)
+    function runCode() {
+        // open terminal
+        terminalBtn.classList.add('terminal-active')
+        terminal.classList.add('show-terminal-container')
+
+
+        let code = editor.getValue();
+        let input = inputDiv.value;
+        const spinner = document.querySelector('#terminal-spinner')
+
+        if (code) {
+            spinner.classList.add('show-spinner')
+            outputDiv.innerHTML = "";
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "language": language,
+                "version": runtimes[language],
+                "files": [
+                    {
+                        "content": `${code}`
+                    }
+                ],
+                "stdin": input,
+                "compile_timeout": 10000,
+                "run_timeout": 3000,
+                "compile_memory_limit": -1,
+                "run_memory_limit": -1
+            });
+
+            const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("https://emkc.org/api/v2/piston/execute", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    let output = JSON.parse(result).run.output;
+                    outputDiv.innerHTML = output;
+                    spinner.classList.remove('show-spinner')
+                })
+                .catch(error => console.log('error', error));
+        }
+    }
+
     return editor
+}
+
+async function getRuntimes() {
+    var myHeaders = new Headers();
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    let response = await fetch("https://emkc.org/api/v2/piston/runtimes", requestOptions);
+
+    response = await response.text();
+    return JSON.parse(response);
 }
 
 
