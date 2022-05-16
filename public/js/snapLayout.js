@@ -6,7 +6,7 @@ class SnapLayout {
         this.wrapperHeight = this.wrapper.clientHeight
         this.wrapperWidth = this.wrapper.clientWidth
 
-        this.defaultWindowWidth = options.defaultWindowWidth || 700
+        this.defaultWindowWidth = options.defaultWindowWidth || 500
         this.defaultWindowHeight = options.defaultWindowHeight || 500
 
         this.minWindowWidth = options.minWindowWidth || 245

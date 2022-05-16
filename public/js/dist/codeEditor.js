@@ -18219,6 +18219,57 @@ function initialiseAce(doc) {
         }
     })
 
+    // input output toggle
+    const outputBtn = document.querySelector('.output-btn')
+    const inputBtn = document.querySelector('.input-btn')
+    const outputDiv = document.querySelector('.output-div')
+    const inputDiv = document.querySelector('.input-div')
+
+    outputBtn.addEventListener('click', (e) => {
+        if (outputBtn.classList.contains('active-terminal-btn'))
+            return
+
+        inputBtn.classList.remove('active-terminal-btn')
+        outputBtn.classList.add('active-terminal-btn')
+
+        inputDiv.classList.remove('show-terminal')
+        outputDiv.classList.add('show-terminal')
+    })
+
+    inputBtn.addEventListener('click', (e) => {
+        if (inputBtn.classList.contains('active-terminal-btn'))
+            return
+
+        outputBtn.classList.remove('active-terminal-btn')
+        inputBtn.classList.add('active-terminal-btn')
+
+        outputDiv.classList.remove('show-terminal')
+        inputDiv.classList.add('show-terminal')
+    })
+
+    const terminalBtn = document.querySelector('.terminal-open-btn')
+    const terminal = document.querySelector('.terminal-container')
+
+    terminalBtn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('terminal-active')) {
+            e.target.classList.remove('terminal-active')
+            terminal.classList.remove('show-terminal-container')
+        }
+        else {
+            e.target.classList.add('terminal-active')
+            terminal.classList.add('show-terminal-container')
+        }
+
+        resizeAceEditor()
+    })
+
+    document.querySelector('.close-terminal-btn').addEventListener('click', () => {
+        terminalBtn.classList.remove('terminal-active')
+        terminal.classList.remove('show-terminal-container')
+
+        resizeAceEditor()
+    })
+
     return editor
 }
 

@@ -4,11 +4,22 @@
     box-sizing: border-box;
 }
 
+#Code-Editor-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 #codeEditor {
     position: absolute;
-    top: 50px;
+    top: 0;
+    bottom: 0;
     right: 0;
-    bottom: 29.6px;
     left: 0;
     font-family: monospace !important;
     font-size: 20px;
@@ -127,8 +138,6 @@
 }
 
 .editor-footer {
-    position: absolute;
-    bottom: 0;
     background-color: #37373b;
     width: 100%;
     padding: 5px 0;
@@ -150,10 +159,153 @@
     caret-color: transparent;
 }
 
-.word-wrap-btn:hover {
-    background-color: #202020;
+.footer-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
+    font-size: 12px;
+    color: gray;
+    border-radius: 5px;
+    padding: 3px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    caret-color: transparent;
+}
+
+.terminal-open-btn {
+    margin-right: 20px;
+}
+
+.word-wrap-btn {
+    margin-right: 20px;
+}
+
+.footer-btn:hover {
+    background-color: #222222;
+}
+
+.terminal-active {
+    background-color: #222222;
+    ;
 }
 
 .word-wrap-active {
-    background-color: #202020;
+    background-color: #222222;
+}
+
+.terminal-container {
+    position: relative;
+    height: 50%;
+    min-height: 150px;
+    background-color: #343538;
+    border-radius: 5px;
+    margin: 5px;
+    display: none;
+    flex-direction: column;
+}
+
+.show-terminal-container {
+    display: flex;
+}
+
+.terminal-header {
+    position: relative;
+    padding: 10px 10px;
+    column-gap: 10px;
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.close-terminal-btn {
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    padding: 3px 3px;
+    position: absolute;
+    color: #8E9294;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    caret-color: transparent;
+}
+
+.close-terminal-btn i {
+    font-size: 15px;
+}
+
+.close-terminal-btn:hover {
+    background-color: #57595D;
+    color: white;
+}
+
+.terminal-btn {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #3E3F42;
+    color: #8E9294;
+    cursor: pointer;
+    caret-color: transparent;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.terminal-btn:hover {
+    background-color: #57595D;
+    color: white;
+}
+
+.active-terminal-btn {
+    background-color: #57595D;
+    color: white;
+}
+
+.terminal-content {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    left: 10px;
+    top: 45px;
+    margin: 5px;
+    width: calc(100% - 20px);
+    height: calc(100% - 60px);
+    color: #F5F9FA;
+    overflow: auto;
+}
+
+.output-div {
+    display: none;
+}
+
+.input-div {
+    display: none;
+    resize: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.show-terminal {
+    display: block;
+}
+
+/* width */
+.terminal-content::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+}
+
+/* Track */
+.terminal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+.terminal-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+.terminal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

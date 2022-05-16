@@ -203,6 +203,18 @@ const codeEditorBody = `
 <div class="editor-body">
     <div id="codeEditor"></div>
 </div>
+<div class="terminal-container">
+<div class="terminal-header">
+    <div class="output-btn terminal-btn active-terminal-btn">OUTPUT</div>
+    <div class="input-btn terminal-btn">INPUT</div>
+    <div class="close-terminal-btn">
+    <i class="material-icons">close</i>
+    </div>
+</div>
+<div class="output-div terminal-content"></div>
+<textarea class="input-div terminal-content" placeholder="input goes here"></textarea>
+</div>
 <div class="editor-footer">
-    <div class="word-wrap-btn">word wrap</div>
+    <div class="terminal-open-btn footer-btn">TERMINAL</div>
+    <div class="word-wrap-btn footer-btn">WORD WRAP</div>
 </div>`
