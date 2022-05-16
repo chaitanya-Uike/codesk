@@ -312,7 +312,7 @@
 #terminal-spinner {
     display: none;
     position: absolute;
-    right: 210px;
+    right: 180px;
     bottom: 11px;
     transform: scale(0.2);
 }

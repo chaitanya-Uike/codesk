@@ -230,5 +230,5 @@ const codeEditorBody = `
         <div></div>
     </div>
     <div class="terminal-open-btn footer-btn">TERMINAL</div>
-    <div class="word-wrap-btn footer-btn">WORD WRAP</div>
+    <div class="word-wrap-btn footer-btn">WRAP</div>
 </div>`

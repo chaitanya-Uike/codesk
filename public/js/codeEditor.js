@@ -305,6 +305,7 @@ function initialiseAce(doc) {
         // open terminal
         terminalBtn.classList.add('terminal-active')
         terminal.classList.add('show-terminal-container')
+        resizeAceEditor()
 
 
         let code = editor.getValue();
