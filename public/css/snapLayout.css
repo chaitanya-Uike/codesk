@@ -22,6 +22,10 @@ body {
     overflow: hidden;
 }
 
+.sl-window {
+    display: none;
+}
+
 .taskbar {
     display: flex;
     flex-direction: column;
@@ -114,6 +118,8 @@ body {
     border-radius: 5px;
     box-sizing: border-box;
     border: 1px solid lightgray;
+    overflow: auto;
+    overflow-y: hidden;
 }
 
 .resizable {

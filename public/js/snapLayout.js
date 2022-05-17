@@ -3,6 +3,10 @@ class SnapLayout {
 
         this.wrapper = qs(selector)
 
+        this.contents = {}
+
+        this.getContentsFromHTML()
+
         this.wrapperHeight = this.wrapper.clientHeight
         this.wrapperWidth = this.wrapper.clientWidth
 
@@ -46,6 +50,16 @@ class SnapLayout {
         this.removeWrapperListener()
     }
 
+    getContentsFromHTML() {
+        // read the wrapper container and find elements to create windows
+        const children = [...this.wrapper.children]
+        children.forEach(child => {
+            const id = child.id
+            this.contents[id] = child.innerHTML
+            child.remove()
+        })
+    }
+
     attachObserver() {
 
         const observer = new ResizeObserver((entries) => {
@@ -68,17 +82,29 @@ class SnapLayout {
         observer.observe(this.wrapper)
     }
 
-    createWindow(id, body, options) {
+    createWindow(id, options) {
         /*
             options = {
+                body : string describing the body of the window, if not provided will use the element with given id
                 afterCreation : function(), called after creation of window
                 resizer : function(), called after window is resozed
             }
         
         */
+        if (options && !options.body && !this.contents[id]) {
+            throw new Error('Either provide options.body or create a HTML element inside the wrapper with given id and class "sl-window"')
+        }
+
         const div = document.createElement("div")
         div.className = "draggable-div"
         div.id = id
+
+        let body;
+        if (options && options.body)
+            body = options.body
+        else {
+            body = this.contents[id]
+        }
 
         div.innerHTML = `
         <div id="${id}-header" class="header">
@@ -111,7 +137,7 @@ class SnapLayout {
         }
 
         // resizer callback for when the window is resized
-        if (options.resizer) {
+        if (options && options.resizer) {
             const observer = new ResizeObserver(options.resizer).observe(div)
         }
 
@@ -123,7 +149,7 @@ class SnapLayout {
 
         this.wrapper.appendChild(div)
 
-        if (options.afterCreation) options.afterCreation()
+        if (options && options.afterCreation) options.afterCreation()
 
     }
 

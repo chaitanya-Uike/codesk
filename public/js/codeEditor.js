@@ -11,11 +11,10 @@ class CodeEditor {
         this.localChange = false
     }
 
-    initializeCodeEditor(callback) {
-        this.doc.subscribe((err) => {
+    async initializeCodeEditor() {
+        await this.doc.subscribe((err) => {
             if (err) throw err
             this.initialiseAce(this.doc)
-            callback()
         })
     }
 

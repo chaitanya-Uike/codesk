@@ -39,5 +39,5 @@ module.exports = {
     connection,
     Quill,
     tinycolor,
-    ObjectID
+    ObjectID,
 }

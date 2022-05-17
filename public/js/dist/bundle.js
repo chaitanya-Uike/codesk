@@ -31613,7 +31613,7 @@ module.exports = {
     connection,
     Quill,
     tinycolor,
-    ObjectID
+    ObjectID,
 }
 },{"bson-objectid":3,"quill":16,"quill-cursors":15,"reconnecting-websocket":17,"rich-text":18,"sharedb/lib/client":27,"tinycolor2":48}]},{},[49])(49)
 });

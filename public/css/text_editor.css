@@ -16,6 +16,7 @@
 }
 
 .ql-toolbar.ql-snow {
+    min-width: 370px;
     width: fit-content;
     padding: 15px 30px;
     margin: 0 auto;
@@ -136,7 +137,7 @@
 /* editor styling */
 
 #textEditor {
-    height: calc(100% - 130px);
+    height: calc(100% - 150px);
     overflow: auto;
 }
 

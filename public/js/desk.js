@@ -7,15 +7,19 @@ const textEditor = new TextEditor('#textEditor', textDoc)
 const codeDoc = Module.connection.get('code-editor', ROOM_ID)
 const codeEditor = new CodeEditor('codeEditor', codeDoc)
 
-let colors = {}
-
 // initialize snapLayout
 const snapLayout = new SnapLayout('.wrapper', {
     onSetActive: taskbarStatusSet
 })
 
+
+let colors = {}
+
 // presence setup 
 function initTextEditorPresence() {
+    if (!textEditor.quill)
+        return
+
     const cursors = textEditor.quill.getModule('cursors')
     const presence = textDoc.connection.getDocPresence('text-editor', ROOM_ID)
 
@@ -51,6 +55,9 @@ function initTextEditorPresence() {
 
 
 function initCodeEditorPresence() {
+    if (!codeEditor.editor)
+        return
+
     const presence = codeDoc.connection.getDocPresence('code-editor', ROOM_ID)
 
     presence.subscribe(function (error) {

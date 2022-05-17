@@ -6,9 +6,6 @@
   "scripts": {
     "start": "node server.js",
     "devStart": "nodemon server.js",
-    "buildTextEditor": "browserify public/js/textEditor.js --s TextEditor -o public/js/dist/textEditor.js",
-    "buildCodeEditor": "browserify public/js/codeEditor.js --s CodeEditor -o public/js/dist/codeEditor.js",
-    "build-l": "npm run buildTextEditor && npm run buildCodeEditor",
     "build": "browserify public/js/module.js --s Module -o public/js/dist/bundle.js"
   },
   "keywords": [],
