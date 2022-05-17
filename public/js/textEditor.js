@@ -20,12 +20,10 @@ const connection = new sharedb.Connection(socket)
 
 const doc = connection.get(collection, id);
 
-let quill = null;
-
 function initializeTextEditor() {
     doc.subscribe(function (err) {
         if (err) throw err;
-        quill = initialiseQuill(doc);
+        initialiseQuill(doc);
     })
 }
 
@@ -61,7 +59,7 @@ function initialiseQuill(doc) {
     // change the link placeholder to www.github.com
     const tooltip = quill.theme.tooltip;
     const input = tooltip.root.querySelector("input[data-link]");
-    input.dataset.link = 'www.wave-editor.com';
+    input.dataset.link = 'www.codesk.com';
 
     quill.setContents(doc.data);
 
