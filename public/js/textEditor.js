@@ -1,119 +1,72 @@
-const ReconnectingWebSocket = require('reconnecting-websocket')
-const sharedb = require('sharedb/lib/client')
-const richText = require('rich-text')
-const Quill = require('quill')
-const QuillCursors = require('quill-cursors')
-const tinycolor = require('tinycolor2')
-const ObjectID = require('bson-objectid')
+class TextEditor {
+    constructor(selector, doc) {
+        this.selector = selector;
+        this.doc = doc
+        this.quill = null
+    }
 
-sharedb.types.register(richText.type)
-Quill.register('modules/cursors', QuillCursors)
+    initializeTextEditor(callback) {
+        this.doc.subscribe((err) => {
+            if (err) throw err;
+            this.initializeQuill()
+            callback()
+        })
+    }
 
-let colors = {}
+    initializeQuill() {
+        this.quill = new Module.Quill(this.selector, {
+            theme: 'snow',
+            modules: {
+                toolbar: '#toolbar',
+                cursors: true
+            },
+        })
 
-const collection = 'text-editor'
-const id = ROOM_ID
-const presenceId = new ObjectID().toString()
+        this.setupTooltip()
 
-const socket = new ReconnectingWebSocket('ws://' + window.location.host);
-const connection = new sharedb.Connection(socket)
+        this.quill.setContents(this.doc.data)
 
-const doc = connection.get(collection, id);
+        this.submitLocalChanges()
 
-function initializeTextEditor() {
-    doc.subscribe(function (err) {
-        if (err) throw err;
-        initialiseQuill(doc);
-    })
-}
+        this.listenAndupdateContent()
+    }
 
-const Font = Quill.import("formats/font")
-const Size = Quill.import('attributors/style/size');
+    setupTooltip() {
+        // change the default link shown in quill tooltip
+        const tooltip = this.quill.theme.tooltip;
+        const input = tooltip.root.querySelector("input[data-link]");
+        input.dataset.link = 'www.codesk.com';
+    }
 
-// register fonts
-Font.whitelist = [
-    "arial",
-    "roboto",
-    "montserrat",
-    "helvetica",
-    "poppins",
-    "merriweather",
-    "playfair"
-]
-Quill.register(Font, true)
+    submitLocalChanges() {
+        // submit local changes ignore programatically made changes
 
-// register font sizes
-const fontSizes = ['14px', '16px', '18px', '22px', '28px', '36px']
-Size.whitelist = fontSizes;
-Quill.register(Size, true);
+        this.quill.on('text-change', (delta, oldDelta, source) => {
+            if (source !== 'user')
+                return
+            this.doc.submitOp(delta)
+        })
+    }
 
-function initialiseQuill(doc) {
-    const quill = new Quill('#textEditor', {
-        theme: 'snow',
-        modules: {
-            toolbar: '#toolbar',
-            cursors: true
-        },
-    });
+    listenAndupdateContent() {
+        this.doc.on('op', (op, source) => {
+            // source is falsy if local change is made
+            if (source)
+                return
 
-    // change the link placeholder to www.github.com
-    const tooltip = quill.theme.tooltip;
-    const input = tooltip.root.querySelector("input[data-link]");
-    input.dataset.link = 'www.codesk.com';
+            this.quill.updateContents(op)
+        })
+    }
 
-    quill.setContents(doc.data);
+    submitPresence(submissionHandler, name) {
+        this.quill.on('selection-change', (range, oldRange, source) => {
 
-    quill.on('text-change', function (delta, oldDelta, source) {
-        if (source !== 'user') return;
-        doc.submitOp(delta);
-    });
+            if (source !== 'user') return;
 
-    doc.on('op', function (op, source) {
-        if (source) return;
-        quill.updateContents(op);
-    });
+            if (!range) return;
 
-    // initializing multi cursors
-    const cursors = quill.getModule('cursors');
-
-    const presence = doc.connection.getDocPresence(collection, id);
-
-    presence.subscribe(function (error) {
-        if (error) throw error;
-    });
-
-    const localPresence = presence.create(presenceId);
-
-    quill.on('selection-change', function (range, oldRange, source) {
-
-        if (source !== 'user') return;
-
-        if (!range) return;
-
-        // range.name = nameInput.value;
-        localPresence.submit(range, function (error) {
-            if (error) throw error;
+            range.name = name
+            submissionHandler(range)
         });
-    });
-
-    presence.on('receive', function (id, range) {
-        colors[id] = colors[id] || tinycolor.random().toHexString();
-        var name = (range && range.name) || 'Anonymous';
-
-        if (!range) {
-            try {
-                cursors.removeCursor(id)
-            } catch (err) {
-                console.log(err);
-            }
-            return
-        }
-
-        cursors.createCursor(id, name, colors[id]);
-        cursors.moveCursor(id, range);
-    })
-
-    return quill
+    }
 }
-
-module.exports = { initializeTextEditor }

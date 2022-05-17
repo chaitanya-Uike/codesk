@@ -13,7 +13,9 @@ textEditorIcon.addEventListener("click", () => {
     }
     else {
         const options = {
-            afterCreation: TextEditor.initializeTextEditor
+            afterCreation: () => {
+                textEditor.initializeTextEditor(initTextEditorPresence)
+            }
         }
         snapLayout.createWindow("Text-Editor", textEditorBody, options)
         textEditorIcon.querySelector(".status").classList.add("open")
@@ -36,8 +38,14 @@ codeEditorIcon.addEventListener("click", () => {
     }
     else {
         const options = {
-            afterCreation: CodeEditor.initializeCodeEditor,
-            resizer: CodeEditor.resizeAceEditor
+            afterCreation: () => {
+                codeEditor.initializeCodeEditor(() => {
+                    initCodeEditorPresence()
+                    codeEditorFunctionality()
+                })
+
+            },
+            resizer: codeEditor.resizeAceEditor
         }
         snapLayout.createWindow("Code-Editor", codeEditorBody, options)
         codeEditorIcon.querySelector(".status").classList.add("open")
