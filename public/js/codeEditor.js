@@ -7,6 +7,8 @@ class CodeEditor {
         this.aceDoc = null
         this.adapter = null
         this.piston = new Piston()
+        this.curMgr = null
+        this.selMgr = null
         this.ignorechange = false
     }
 
@@ -45,6 +47,9 @@ class CodeEditor {
         this.Session = this.editor.getSession()
         this.aceDoc = this.Session.getDocument()
         this.adapter = new AceShareDBAdapter(this.aceDoc)
+
+        this.curMgr = new AceCollabExt.AceMultiCursorManager(this.Session)
+        this.selMgr = new AceCollabExt.AceMultiSelectionManager(this.Session)
 
         this.setContents()
 
@@ -92,7 +97,7 @@ class CodeEditor {
     }
 
 
-    submitPresence(submissionHandler, name) {
+    submitPresence(localPresence, userName) {
         const Selection = this.Session.getSelection()
 
         Selection.on("changeCursor", () => {
@@ -103,10 +108,49 @@ class CodeEditor {
                 if (!selection)
                     return;
 
-                selection.name = name
-                submissionHandler(selection)
+                selection.name = userName
+
+                localPresence.submit(selection, function (err) {
+                    if (err) throw err
+                })
+
             }, 0)
         })
+    }
+
+    recievePresence(id, range, color) {
+        if (!range) {
+            try {
+                this.curMgr.removeCursor(id)
+                this.selMgr.removeSelection(id)
+            } catch (err) {
+                console.log(err);
+            }
+            return
+        }
+
+        const name = range.name || 'Anonymous';
+
+        // set cursor
+        try {
+            this.curMgr.addCursor(id, name, color, range.index)
+        } catch (e) {
+            this.curMgr.setCursor(id, range.index)
+        }
+
+        const start = this.aceDoc.indexToPosition(range.index)
+        const end = this.aceDoc.indexToPosition(range.index + range.length)
+
+        const selectedRanges = this.getSelectionRanges(start, end)
+
+        if (!selectedRanges) return
+
+        try {
+            this.selMgr.addSelection(id, name, color, selectedRanges);
+        }
+        catch (e) {
+            this.selMgr.setSelection(id, selectedRanges)
+        }
     }
 
     getSelection(range) {

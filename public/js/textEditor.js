@@ -1,8 +1,9 @@
 class TextEditor {
     constructor(selector, doc) {
-        this.selector = selector;
+        this.selector = selector
         this.doc = doc
         this.quill = null
+        this.cursors = null
     }
 
     initializeTextEditor(callback) {
@@ -22,6 +23,8 @@ class TextEditor {
                 cursors: true
             },
         })
+
+        this.cursors = this.quill.getModule('cursors')
 
         this.setupTooltip()
 
@@ -59,15 +62,35 @@ class TextEditor {
         })
     }
 
-    submitPresence(submissionHandler, name) {
+    submitPresence(localPresence, userName) {
         this.quill.on('selection-change', (range, oldRange, source) => {
 
             if (source !== 'user') return;
 
             if (!range) return;
 
-            range.name = name
-            submissionHandler(range)
-        });
+            range.name = userName
+
+            localPresence.submit(range, function (error) {
+                if (error) throw error;
+            })
+        })
+    }
+
+    recievePresence(id, range, color) {
+        // null range means that the user left, remove that users cursor
+        if (!range) {
+            try {
+                this.cursors.removeCursor(id)
+            } catch (err) {
+                console.log(err)
+            }
+            return
+        }
+
+        const name = range.name || 'Anonymous';
+
+        this.cursors.createCursor(id, name, color)
+        this.cursors.moveCursor(id, range)
     }
 }
