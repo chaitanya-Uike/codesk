@@ -1,5 +1,5 @@
 class SnapLayout {
-    constructor(selector, options) {
+    constructor(selector, options = {}) {
 
         this.wrapper = qs(selector)
 
@@ -125,6 +125,9 @@ class SnapLayout {
         div.style.top = this.initialPositionTop + "px"
         div.style.left = this.initialPositionLeft + "px"
 
+        // initially hide the window
+        div.style.display = 'none'
+
         this.addDragFunc(div)
         this.addResizeFunc(div)
         this.addToggleAndCloseFunc(div)
@@ -141,6 +144,9 @@ class SnapLayout {
             const observer = new ResizeObserver(options.onResize).observe(div)
         }
 
+
+        if (options && options.onClose) window.onClose = options.onClose
+
         div.style.zIndex = Object.keys(this.windowsList).length * 2
 
         this.windowsList[id] = window
@@ -150,7 +156,19 @@ class SnapLayout {
         this.wrapper.appendChild(div)
 
         if (options && options.onCreation) options.onCreation()
+    }
 
+    openWindow(id) {
+        const div = this.windowsList[id].div
+        div.style.display = 'block'
+
+        div.style.width = this.defaultWindowWidth + "px"
+        div.style.height = this.defaultWindowHeight + "px"
+
+        div.style.top = this.initialPositionTop + "px"
+        div.style.left = this.initialPositionLeft + "px"
+
+        this.setActive(id)
     }
 
     addDragFunc(div) {
@@ -304,7 +322,7 @@ class SnapLayout {
 
 
             if (e.target && e.target.matches("div.close")) {
-                // free it's this.layout space
+                // free it's layout space
                 if (this.windowsList[div.id].snappedTo != snapPos.none)
                     this.layout[this.windowsList[div.id].snappedTo] = null
 
@@ -319,11 +337,12 @@ class SnapLayout {
                     }
                 }
 
-                // remove from dom
-                div.remove()
+                div.style.display = 'none'
 
-                // remove from windows list
-                delete this.windowsList[div.id]
+                if (this.windowsList[div.id].onClose) {
+                    console.log("here")
+                    this.windowsList[div.id].onClose()
+                }
 
                 this.resetLayoutResizer()
             }
@@ -569,8 +588,10 @@ class SnapLayout {
         if (this.activeWindow)
             this.activeWindow.querySelector(".header").classList.remove("active")
 
-        // call the onactive callback function
-        if (this.onSetActive) this.onSetActive(this.activeWindow, id)
+        if (this.activeWindow)
+            document.querySelector(`#${this.activeWindow.id}-icon`).querySelector(".status").classList.remove("active-icon")
+
+        document.querySelector(`#${id}-icon`).querySelector(".status").classList.add("active-icon")
 
         this.activeWindow = this.windowsList[id].div
         this.activeWindow.querySelector(".header").classList.add("active")

@@ -27,10 +27,6 @@ class Piston {
     }
 
     async runCode(language, code, input) {
-        if (!language || !this.runtumes[language]) {
-            throw new Error('language not supported')
-        }
-
         if (!code) {
             return
         }

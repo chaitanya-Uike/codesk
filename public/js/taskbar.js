@@ -8,60 +8,41 @@ const videoStreamIcon = qs("#Video-stream-icon")
 
 
 textEditorIcon.addEventListener("click", () => {
-    if (snapLayout.windowsList["Text-Editor"]) {
+    if (textEditorIcon.querySelector(".status").classList.contains("open")) {
         snapLayout.setActive("Text-Editor")
     }
     else {
-        const options = {
-            onCreation: () => {
-                textEditor.initializeTextEditor(() => {
-                    presence.subscribe(TEXT_EDITOR_COLLECTION, textEditor)
-                })
-            }
-        }
-
-        snapLayout.createWindow("Text-Editor", options)
+        snapLayout.openWindow("Text-Editor")
         textEditorIcon.querySelector(".status").classList.add("open")
     }
 })
 
 whiteBoardIcon.addEventListener("click", () => {
-    if (snapLayout.windowsList["WhiteBoard"]) {
+    if (whiteBoardIcon.querySelector(".status").classList.contains("open")) {
         snapLayout.setActive("WhiteBoard")
     }
     else {
-        snapLayout.createWindow("WhiteBoard", "")
+        snapLayout.openWindow("WhiteBoard")
         whiteBoardIcon.querySelector(".status").classList.add("open")
     }
 })
 
 codeEditorIcon.addEventListener("click", () => {
-    if (snapLayout.windowsList["Code-Editor"]) {
+    if (codeEditorIcon.querySelector(".status").classList.contains("open")) {
         snapLayout.setActive("Code-Editor")
     }
     else {
-        const options = {
-            onCreation: () => {
-                codeEditor.initializeCodeEditor(() => {
-                    presence.subscribe(CODE_EDITOR_COLLECTION, codeEditor)
-                })
-            },
-            onResize: () => {
-                codeEditor.resizeAceEditor()
-            }
-        }
-
-        snapLayout.createWindow("Code-Editor", options)
+        snapLayout.openWindow("Code-Editor")
         codeEditorIcon.querySelector(".status").classList.add("open")
     }
 })
 
 videoStreamIcon.addEventListener("click", () => {
-    if (snapLayout.windowsList["Video-stream"]) {
+    if (videoStreamIcon.querySelector(".status").classList.contains("open")) {
         snapLayout.setActive("Video-stream")
     }
     else {
-        snapLayout.createWindow("Video-stream")
+        snapLayout.openWindow("Video-stream")
         videoStreamIcon.querySelector(".status").classList.add("open")
     }
 })

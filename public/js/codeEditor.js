@@ -9,6 +9,7 @@ class CodeEditor {
         this.piston = new Piston()
         this.curMgr = null
         this.selMgr = null
+        this.language = 'javascript'
         this.ignorechange = false
     }
 
@@ -153,6 +154,15 @@ class CodeEditor {
         }
     }
 
+    removeUser(id) {
+        try {
+            this.curMgr.removeCursor(id)
+            this.selMgr.removeSelection(id)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     getSelection(range) {
         const startPos = this.aceDoc.positionToIndex(range.start)
         const endPos = this.aceDoc.positionToIndex(range.end)
@@ -203,13 +213,14 @@ class CodeEditor {
         const runBtn = document.querySelector('.run-code-btn')
         const spinner = document.querySelector('#terminal-spinner')
 
-        let language = 'javascript'
         modeSelector.addEventListener('click', (e) => {
             if (e.target && e.target.matches('.option')) {
                 modeSelector.querySelector('.label').textContent = e.target.innerHTML
                 const mode = e.target.getAttribute('mode')
                 this.Session.setMode(`ace/mode/${mode}`)
-                language = e.target.getAttribute('lang')
+                this.language = e.target.getAttribute('lang')
+
+                socket.emit('language-changed', e.target.innerHTML, mode, this.language)
             }
 
             if (options.classList.contains('show-options')) {
@@ -295,11 +306,18 @@ class CodeEditor {
             spinner.classList.add('show-spinner')
             outputDiv.innerHTML = "";
 
-            const output = await this.piston.runCode(language, this.editor.getValue(), inputDiv.value)
+            const output = await this.piston.runCode(this.language, this.editor.getValue(), inputDiv.value)
 
             outputDiv.innerHTML = output;
             spinner.classList.remove('show-spinner')
         })
 
+    }
+
+    changeLanguage(label, mode, lang) {
+        const modeSelector = document.querySelector('.mode-selector')
+        this.language = lang
+        modeSelector.querySelector('.label').textContent = label
+        this.Session.setMode(`ace/mode/${mode}`)
     }
 }
