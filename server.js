@@ -100,6 +100,18 @@ io.on('connection', socket => {
 
         socket.broadcast.to(roomId).emit('user-joined', userId)
 
+        socket.on('leave-text-editor', id => {
+            socket.broadcast.to(roomId).emit('left-text-editor', id)
+        })
+
+        socket.on('leave-code-editor', id => {
+            socket.broadcast.to(roomId).emit('left-code-editor', id)
+        })
+
+        socket.on('language-changed', (label, mode, lang) => {
+            socket.broadcast.to(roomId).emit('change-language', label, mode, lang)
+        })
+
         socket.on('disconnect', () => {
             socket.broadcast.to(roomId).emit('user-disconnected', userId)
         })

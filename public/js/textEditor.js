@@ -93,4 +93,12 @@ class TextEditor {
         this.cursors.createCursor(id, name, color)
         this.cursors.moveCursor(id, range)
     }
+
+    removeUser(id) {
+        try {
+            this.cursors.removeCursor(id)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }

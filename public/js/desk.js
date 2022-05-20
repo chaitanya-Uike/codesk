@@ -1,5 +1,9 @@
 const userId = new Module.ObjectID().toString()
 const userName = 'chaitanya'
+const socket = Module.io()
+
+// join the room
+socket.emit('join-room', ROOM_ID, userId)
 
 const TEXT_EDITOR_COLLECTION = 'text-editor'
 const CODE_EDITOR_COLLECTION = 'code-editor'
@@ -13,14 +17,63 @@ const textEditor = new TextEditor('#textEditor', textDoc)
 const codeEditor = new CodeEditor('codeEditor', codeDoc)
 
 // initialize snapLayout
-const snapLayout = new SnapLayout('.wrapper', {
-    onSetActive: taskbarStatusSet
+const snapLayout = new SnapLayout('.wrapper')
+
+// initialize
+const textEditorOptions = {
+    onCreation: () => {
+        textEditor.initializeTextEditor(() => {
+            presence.subscribe(TEXT_EDITOR_COLLECTION, textEditor)
+        })
+    },
+    onClose: () => {
+        socket.emit('leave-text-editor', userId)
+    }
+}
+
+snapLayout.createWindow("Text-Editor", textEditorOptions)
+
+const codeEditorOptions = {
+    onCreation: () => {
+        codeEditor.initializeCodeEditor(() => {
+            presence.subscribe(CODE_EDITOR_COLLECTION, codeEditor)
+        })
+    },
+    onResize: () => {
+        codeEditor.resizeAceEditor()
+    },
+    onClose: () => {
+        socket.emit('leave-code-editor', userId)
+    }
+}
+
+snapLayout.createWindow("Code-Editor", codeEditorOptions)
+
+
+snapLayout.createWindow("WhiteBoard")
+snapLayout.createWindow("Video-stream")
+
+
+
+// socket events
+socket.on('user-joined', id => {
+    console.log('user-joined', id)
 })
 
-function taskbarStatusSet(activeWindow, id) {
-    // id of the 
-    if (activeWindow)
-        document.querySelector(`#${activeWindow.id}-icon`).querySelector(".status").classList.remove("active-icon")
+socket.on('user-disconnected', id => {
+    console.log('user-disconnected', id)
+})
 
-    document.querySelector(`#${id}-icon`).querySelector(".status").classList.add("active-icon")
-}
+socket.on('left-text-editor', id => {
+    console.log('left text editor', id);
+    textEditor.removeUser(id)
+})
+
+socket.on('left-code-editor', id => {
+    console.log('left code editor', id);
+    codeEditor.removeUser(id)
+})
+
+socket.on('change-language', (label, mode, lang) => {
+    codeEditor.changeLanguage(label, mode, lang)
+})
