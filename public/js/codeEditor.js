@@ -7,7 +7,6 @@ class CodeEditor {
         this.aceDoc = null
         this.adapter = null
         this.piston = new Piston()
-        this.Range = ace.require("ace/range").Range
         this.ignorechange = false
     }
 
@@ -118,28 +117,29 @@ class CodeEditor {
     }
 
     getSelectionRanges(start, end) {
+        const Range = ace.require("ace/range").Range
         let selectedRanges = []
 
         const nLines = end.row - start.row + 1;
 
         if (nLines === 1) {
-            selectedRanges.push(new this.Range(start.row, start.column, end.row, end.column))
+            selectedRanges.push(new Range(start.row, start.column, end.row, end.column))
             return selectedRanges
         }
 
         let lastColumn;
         // first line
         lastColumn = this.Session.getDocumentLastRowColumn(start)
-        selectedRanges.push(new this.Range(start.row, start.column, start.row, lastColumn))
+        selectedRanges.push(new Range(start.row, start.column, start.row, lastColumn))
 
         // middle lines
         for (let i = 1; i < nLines - 1; i++) {
             lastColumn = this.Session.getDocumentLastRowColumn(start.row + i, 0)
-            selectedRanges.push(new this.Range(start.row + i, 0, start.row + i, lastColumn))
+            selectedRanges.push(new Range(start.row + i, 0, start.row + i, lastColumn))
         }
 
         // last lines
-        selectedRanges.push(new this.Range(end.row, 0, end.row, end.column))
+        selectedRanges.push(new Range(end.row, 0, end.row, end.column))
 
         return selectedRanges;
     }

@@ -50,6 +50,10 @@
     background-color: #262730 !important;
 }
 
+.ace_selection {
+    background: #9adcc25c !important;
+}
+
 
 .code-editor-toolbar {
     height: 50px;
