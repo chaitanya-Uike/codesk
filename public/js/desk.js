@@ -24,26 +24,3 @@ function taskbarStatusSet(activeWindow, id) {
 
     document.querySelector(`#${id}-icon`).querySelector(".status").classList.add("active-icon")
 }
-
-
-const textEditorOptions = {
-    onCreation: () => {
-        textEditor.initializeTextEditor(() => {
-            presence.subscribe(TEXT_EDITOR_COLLECTION, textEditor)
-        })
-    }
-}
-
-const codeEditorOptions = {
-    onCreation: () => {
-        codeEditor.initializeCodeEditor(() => {
-            presence.subscribe(CODE_EDITOR_COLLECTION, codeEditor)
-        })
-    },
-    onResize: () => {
-        codeEditor.resizeAceEditor()
-    }
-}
-
-snapLayout.createWindow("Code-Editor", codeEditorOptions)
-snapLayout.createWindow("Text-Editor", textEditorOptions)

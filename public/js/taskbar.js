@@ -14,7 +14,9 @@ textEditorIcon.addEventListener("click", () => {
     else {
         const options = {
             onCreation: () => {
-                textEditor.initializeTextEditor(initTextEditorPresence)
+                textEditor.initializeTextEditor(() => {
+                    presence.subscribe(TEXT_EDITOR_COLLECTION, textEditor)
+                })
             }
         }
 
@@ -40,7 +42,9 @@ codeEditorIcon.addEventListener("click", () => {
     else {
         const options = {
             onCreation: () => {
-                codeEditor.initializeCodeEditor(initCodeEditorPresence)
+                codeEditor.initializeCodeEditor(() => {
+                    presence.subscribe(CODE_EDITOR_COLLECTION, codeEditor)
+                })
             },
             onResize: () => {
                 codeEditor.resizeAceEditor()
