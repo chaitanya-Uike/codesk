@@ -5,10 +5,12 @@ class TextEditor {
         this.quill = null
     }
 
-    initializeTextEditor() {
+    initializeTextEditor(callback) {
         this.doc.subscribe((err) => {
-            if (err) throw err;
+            if (err)
+                throw err;
             this.initializeQuill()
+            callback()
         })
     }
 

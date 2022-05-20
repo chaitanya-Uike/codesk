@@ -56,7 +56,6 @@ class AceShareDBAdapter {
             }
             else {
                 delta.action = 'remove'
-                // initialize accumulater with lines.length - 1 to take '\n' into account
                 const count = operation.delete
                 delta.end = this.aceDoc.indexToPosition(pointer + count)
                 pointer += count
@@ -68,7 +67,7 @@ class AceShareDBAdapter {
     }
 
     applyOps(ops) {
-        // converts the ops provided by shareDB doc 'op' event to Ace delta and applies them
+        // converts the ops provided by shareDB to Ace delta and applies them
         const deltas = this.QuillToAceDelta(ops)
         // apply the deltas
         this.aceDoc.applyDeltas(deltas)

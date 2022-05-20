@@ -3,10 +3,6 @@ class SnapLayout {
 
         this.wrapper = qs(selector)
 
-        this.contents = {}
-
-        this.getContentsFromHTML()
-
         this.wrapperHeight = this.wrapper.clientHeight
         this.wrapperWidth = this.wrapper.clientWidth
 
@@ -21,6 +17,10 @@ class SnapLayout {
 
         this.xDiv = options.xDiv || 0.5
         this.yDiv = options.yDiv || 0.5
+
+        this.contents = {}
+
+        this.getContentsFromHTML()
 
         this.windowsList = {}
         this.activeWindow
@@ -86,8 +86,8 @@ class SnapLayout {
         /*
             options = {
                 body : string describing the body of the window, if not provided will use the element with given id
-                afterCreation : function(), called after creation of window
-                resizer : function(), called after window is resozed
+                onCreation : function(), called after creation of window
+                onResize : function(), called after window is resozed
             }
         
         */
@@ -137,8 +137,8 @@ class SnapLayout {
         }
 
         // resizer callback for when the window is resized
-        if (options && options.resizer) {
-            const observer = new ResizeObserver(options.resizer).observe(div)
+        if (options && options.onResize) {
+            const observer = new ResizeObserver(options.onResize).observe(div)
         }
 
         div.style.zIndex = Object.keys(this.windowsList).length * 2
@@ -149,7 +149,7 @@ class SnapLayout {
 
         this.wrapper.appendChild(div)
 
-        if (options && options.afterCreation) options.afterCreation()
+        if (options && options.onCreation) options.onCreation()
 
     }
 

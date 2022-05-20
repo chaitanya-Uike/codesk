@@ -13,9 +13,8 @@ textEditorIcon.addEventListener("click", () => {
     }
     else {
         const options = {
-            afterCreation: () => {
-                textEditor.initializeTextEditor()
-                initTextEditorPresence()
+            onCreation: () => {
+                textEditor.initializeTextEditor(initTextEditorPresence)
             }
         }
 
@@ -40,12 +39,10 @@ codeEditorIcon.addEventListener("click", () => {
     }
     else {
         const options = {
-            afterCreation: () => {
-                codeEditor.initializeCodeEditor()
-                initCodeEditorPresence()
-                codeEditorFunctionality()
+            onCreation: () => {
+                codeEditor.initializeCodeEditor(initCodeEditorPresence)
             },
-            resizer: () => {
+            onResize: () => {
                 codeEditor.resizeAceEditor()
             }
         }
