@@ -9,6 +9,43 @@
     box-sizing: border-box;
 }
 
+
+
+/* editor styling */
+
+#Text-Editor-body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+#textEditor {
+    height: 100%;
+    overflow: auto;
+}
+
+#textEditor .ql-editor {
+    width: 100%;
+    padding: 40px;
+    padding-bottom: 0;
+    background-color: #1D1E24;
+    font-size: 22px;
+    font-family: Arial;
+    color: white;
+}
+
+.ql-container {
+    border: none;
+    display: flex;
+    justify-content: center;
+    overflow: none;
+    height: fit-content;
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+
 /* toolbar styling */
 #toolbar-wrapper {
     padding-top: 1rem;
@@ -131,36 +168,6 @@
     color: white;
     border: none;
     border-radius: 5px;
-}
-
-
-/* editor styling */
-
-#textEditor {
-    height: calc(100% - 150px);
-    overflow: auto;
-}
-
-#textEditor .ql-editor {
-    width: 100%;
-    padding: 40px;
-    padding-bottom: 0;
-    background-color: #1D1E24;
-    font-size: 22px;
-    font-family: Arial;
-    color: white;
-}
-
-.ql-container {
-    border: none;
-    display: flex;
-    justify-content: center;
-    overflow: none;
-    height: fit-content;
-}
-
-.ql-container.ql-snow {
-    border: none;
 }
 
 

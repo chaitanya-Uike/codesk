@@ -8,7 +8,7 @@ class CodeEditor {
         this.adapter = null
         this.piston = new Piston()
         this.Range = ace.require("ace/range").Range
-        this.localChange = false
+        this.ignorechange = false
     }
 
     async initializeCodeEditor(callback) {
@@ -56,14 +56,14 @@ class CodeEditor {
 
     setContents() {
         // to prevent changes made programatically to trigger on change event
-        this.localChange = true
+        this.ignorechange = true
         this.adapter.applyOps(this.doc.data.ops)
-        this.localChange = false
+        this.ignorechange = false
     }
 
     submitLocalChanges() {
         this.Session.on("change", delta => {
-            if (this.localChange) {
+            if (this.ignorechange) {
                 // local changes so skip
                 return
             }
@@ -86,9 +86,9 @@ class CodeEditor {
             }
             // to prevent changes made programatically to trigger on change event
             // change is a synchronus event in ace so this works
-            this.localChange = true
+            this.ignorechange = true
             this.adapter.applyOps(ops.ops)
-            this.localChange = false
+            this.ignorechange = false
         })
     }
 
