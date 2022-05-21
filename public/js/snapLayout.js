@@ -199,8 +199,8 @@ class SnapLayout {
             // prevent the div from getting out of bounds of the wrapper
             if (div.offsetTop + dy <= this.wrapper.offsetTop + (this.wrapperHeight - headerHeight) && div.offsetTop + dy >= this.wrapper.offsetTop)
                 div.style.top = (div.offsetTop + dy) + "px"
-            if (div.offsetLeft + dx <= this.wrapper.offsetLeft + (this.wrapperWidth - this.defaultWindowWidth) && div.offsetLeft + dx >= this.wrapper.offsetLeft)
-                div.style.left = (div.offsetLeft + dx) + "px"
+            // if (div.offsetLeft + dx <= this.wrapper.offsetLeft + (this.wrapperWidth - this.defaultWindowWidth) && div.offsetLeft + dx >= this.wrapper.offsetLeft)
+            div.style.left = (div.offsetLeft + dx) + "px"
 
             this.displaySnapPreview(this.windowsList[div.id])
         }
@@ -413,12 +413,12 @@ class SnapLayout {
         // top level previews
         if (y <= this.wrapper.offsetTop + this.snapRange.top) {
             // top-left
-            if (x <= this.wrapper.offsetLeft + this.snapRange.left) {
+            if (x + windowWidth * 0.4 <= this.wrapper.offsetLeft) {
                 preview = document.querySelector(".snap-top-left-preview")
                 Window.snapTo = snapPos.topLeft
             }
             // top-right
-            else if (x + windowWidth >= this.wrapper.offsetLeft + this.wrapperWidth - this.snapRange.right) {
+            else if (x + windowWidth * 0.6 >= this.wrapper.offsetLeft + this.wrapperWidth) {
                 preview = document.querySelector(".snap-top-right-preview")
                 Window.snapTo = snapPos.topRight
             }
@@ -432,12 +432,12 @@ class SnapLayout {
         // bottom level previews
         else if (y + windowHeight * 0.5 >= this.wrapper.offsetTop + this.wrapperHeight - this.snapRange.bottom) {
             // bottom left
-            if (x <= this.wrapper.offsetLeft + this.snapRange.left) {
+            if (x + windowWidth * 0.4 <= this.wrapper.offsetLeft) {
                 preview = document.querySelector(".snap-bottom-left-preview")
                 Window.snapTo = snapPos.bottomLeft
             }
             // bottom right
-            else if (x + windowWidth >= this.wrapper.offsetLeft + this.wrapperWidth - this.snapRange.right) {
+            else if (x + windowWidth * 0.6 >= this.wrapper.offsetLeft + this.wrapperWidth) {
                 preview = document.querySelector(".snap-bottom-right-preview")
                 Window.snapTo = snapPos.bottomRight
             }
@@ -449,12 +449,12 @@ class SnapLayout {
 
         // left and right
         else {
-            if (x <= this.wrapper.offsetLeft + this.snapRange.left) {
+            if (x + windowWidth * 0.4 <= this.wrapper.offsetLeft) {
                 // left
                 preview = document.querySelector(".snap-left-preview")
                 Window.snapTo = snapPos.left
             }
-            else if (x + windowWidth >= this.wrapper.offsetLeft + this.wrapperWidth - this.snapRange.right) {
+            else if (x + windowWidth * 0.6 >= this.wrapper.offsetLeft + this.wrapperWidth) {
                 // right
                 preview = document.querySelector(".snap-right-preview")
                 Window.snapTo = snapPos.right

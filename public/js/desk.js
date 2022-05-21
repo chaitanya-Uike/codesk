@@ -2,9 +2,6 @@ const userId = new Module.ObjectID().toString()
 const userName = 'chaitanya'
 const socket = Module.io()
 
-// join the room
-socket.emit('join-room', ROOM_ID, userId)
-
 const TEXT_EDITOR_COLLECTION = 'text-editor'
 const CODE_EDITOR_COLLECTION = 'code-editor'
 
@@ -19,7 +16,7 @@ const codeEditor = new CodeEditor('codeEditor', codeDoc)
 // initialize snapLayout
 const snapLayout = new SnapLayout('.wrapper')
 
-// initialize
+// initialize components
 const textEditorOptions = {
     onCreation: () => {
         textEditor.initializeTextEditor(() => {
@@ -56,6 +53,8 @@ snapLayout.createWindow("Video-stream")
 
 
 // socket events
+socket.emit('join-room', ROOM_ID, userId)
+
 socket.on('user-joined', id => {
     console.log('user-joined', id)
 })
