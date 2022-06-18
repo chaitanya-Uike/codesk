@@ -673,6 +673,8 @@ class SnapLayout {
         let resizePos
 
         const resizeLayouts = (e) => {
+            e.preventDefault()
+
             dx = e.clientX - prevX
             dy = e.clientY - prevY
 
