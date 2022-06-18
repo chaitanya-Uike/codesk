@@ -853,6 +853,13 @@ class SnapLayout {
         // if cursor gets outside the wrapper, stop moving the window
         this.wrapper.addEventListener('mouseleave', () => {
             this.wrapper.onmousemove = null
+
+            for (const key in this.windowsList) {
+                const window = this.windowsList[key]
+                if (window.snapTo !== snapPos.none) {
+                    this.snapwindow(window, window.snapTo)
+                }
+            }
         })
     }
 
