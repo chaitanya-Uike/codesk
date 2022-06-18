@@ -4,14 +4,18 @@ const socket = Module.io()
 
 const TEXT_EDITOR_COLLECTION = 'text-editor'
 const CODE_EDITOR_COLLECTION = 'code-editor'
+const DRAWING_PAD_COLLECTION = 'drawing-pad'
 
 const presence = new Presence(userId, userName, ROOM_ID)
 
 const textDoc = Module.connection.get(TEXT_EDITOR_COLLECTION, ROOM_ID)
 const codeDoc = Module.connection.get(CODE_EDITOR_COLLECTION, ROOM_ID)
+const drawingDoc = Module.connection.get(DRAWING_PAD_COLLECTION, ROOM_ID)
+
 
 const textEditor = new TextEditor('#textEditor', textDoc)
 const codeEditor = new CodeEditor('codeEditor', codeDoc)
+const drawingPad = new DrawingPad('canvas', drawingDoc)
 
 // initialize snapLayout
 const snapLayout = new SnapLayout('.wrapper')
@@ -46,8 +50,14 @@ const codeEditorOptions = {
 
 snapLayout.createWindow("Code-Editor", codeEditorOptions)
 
+const drawingPadOptions = {
+    onCreation: () => {
+        drawingPad.initializeDrawingPad()
+    }
+}
 
-snapLayout.createWindow("WhiteBoard")
+
+snapLayout.createWindow("WhiteBoard", drawingPadOptions)
 snapLayout.createWindow("Video-stream")
 
 

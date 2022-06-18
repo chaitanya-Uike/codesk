@@ -65,6 +65,19 @@ app.get('/:roomId', (req, res) => {
         }
     })
 
+    // create a new drawingDoc
+    const doc = connection.get('drawing-pad', roomId)
+    // fetch the document state 
+    doc.fetch(function (err) {
+        if (err)
+            return res.status(500).json({ "msg": err })
+
+        // if document does not exist, create it
+        if (doc.type === null) {
+            doc.create({ canvas: [] })
+        }
+    })
+
     return res.render('desk', { roomId })
 })
 

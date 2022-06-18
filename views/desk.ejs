@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="css/code_editor.css">
     <link rel="stylesheet" href="css/ace-collab-ext.css">
 
+    <!-- drawing pad -->
+    <link rel="stylesheet" href="css/drawingPad.css">
+    <!-- font awesome icons -->
+    <script src="https://kit.fontawesome.com/71aeb88126.js" crossorigin="anonymous"></script>
+    <!-- google fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <!-- modules -->
     <script src="js/dist/bundle.js"></script>
     <script src="js/presence.js"></script>
@@ -37,6 +45,8 @@
     <script src="js/aceShareDBAdapter.js"></script>
     <script src="js/pistonAPI.js"></script>
     <script src="js/codeEditor.js"></script>
+    <script src="js/dist/fabric.min.js"></script>
+    <script src="js/drawingPad.js"></script>
 </head>
 
 <body>
@@ -219,7 +229,81 @@
                 <div class="word-wrap-btn footer-btn">WRAP</div>
             </div>
         </div>
-        <div id="WhiteBoard" class="sl-window"></div>
+        <div id="WhiteBoard" class="sl-window">
+            <canvas id="canvas" width="1920" height="1080"></canvas>
+            <div id="canvas-toolbar">
+                <div id="pointer-btn" class="toolbar-btn" title="select">
+                    <i class="fa-solid fa-arrow-pointer"></i>
+                </div>
+                <div id="pan-btn" class="toolbar-btn" title="pan">
+                    <span class="material-symbols-outlined">
+                        pan_tool
+                    </span>
+                </div>
+                <div id="draw-mode" class="toolbar-btn toolbar-btn-selected" title="draw">
+                    <span class="material-symbols-outlined">
+                        edit
+                    </span>
+                </div>
+                <div id="shapes-btn" class="toolbar-btn" title="shapes">
+                    <span class="material-symbols-outlined">
+                        category
+                    </span>
+                </div>
+                <div id="undo" class="toolbar-btn" title="undo">
+                    <span class="material-symbols-outlined">
+                        undo
+                    </span>
+                </div>
+                <div id="redo" class="toolbar-btn" title="redo">
+                    <span class="material-symbols-outlined">
+                        redo
+                    </span>
+                </div>
+            </div>
+            <div class="edit-pen-div">
+                <span id="close-pen-options" class="material-symbols-outlined">
+                    close
+                </span>
+                <div id="eraser" title="eraser">
+                    <i class="fa fa-eraser"></i>
+                </div>
+                <input type="range" min="1" max="50" value="5" class="slider" id="stroke-Range">
+                <div class="stroke-colors">
+                    <i class="fa-solid fa-circle-dot" data-value="#FFC114" style="color:#FFC114"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#FBAE17" style="color:#FBAE17"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#F36323" style="color:#F36323"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#E3182D" style="color:#E3182D"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#CF1278" style="color:#CF1278"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#7EC400" style="color:#7EC400"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#00B44B" style="color:#00B44B"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#0078D7" style="color:#0078D7"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#5B318D" style="color:#5B318D"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#BD7CAE" style="color:#BD7CAE"></i>
+                    <i class="fa-solid fa-circle-dot" data-value="#B6B6B6" style="color:#B6B6B6"></i>
+                    <i class="fa-solid fa-circle-dot stroke-color-selected" data-value="#1F1F1F"
+                        style="color:#1F1F1F"></i>
+                </div>
+            </div>
+            <div class="shape-selection-div">
+                <div id="draw-rect" class="toolbar-btn">
+                    <span class="material-symbols-outlined">
+                        rectangle
+                    </span>
+                </div>
+                <div id="draw-circle" class="toolbar-btn">
+                    <span class="material-symbols-outlined">
+                        circle
+                    </span>
+                </div>
+                <div id="draw-triangle" class="toolbar-btn">
+                    <span class="material-symbols-outlined">
+                        change_history
+                    </span>
+                </div>
+            </div>
+            <div class="zoom-level-display-div">100%</div>
+        </div>
         <div id="Video-stream" class="sl-window"></div>
     </div>
 

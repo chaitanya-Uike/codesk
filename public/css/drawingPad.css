@@ -1,0 +1,330 @@
+#WhiteBoard-body {
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.canvas-container {
+    /* dot grid */
+    background-color: white;
+    background-image: radial-gradient(rgb(128, 128, 128), 1%, transparent 11%);
+    background-size: 30px 30px;
+    background-position: 0 0, 30px 30px;
+    background-repeat: repeat;
+}
+
+.controls {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+}
+
+.controls-toolbar {
+    display: flex;
+    width: fit-content;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+    column-gap: 5px;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.show-controls-div {
+    display: flex;
+}
+
+.controls-toolbar .control-btn {
+    padding: 6px;
+    display: flex;
+    place-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease-in-out;
+}
+
+.controls-toolbar .control-btn:hover {
+    background-color: rgb(182, 217, 247);
+}
+
+
+
+.controls-toolbar .selected-btn {
+    background-color: rgb(182, 217, 247) !important;
+}
+
+.color-div {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.stroke-colors-div {
+    display: none;
+    grid-template-columns: repeat(5, 28px);
+    gap: 5px;
+}
+
+.color-div i {
+    font-size: 20px;
+    padding: 1px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid rgb(255, 255, 255);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.fill-colors-div {
+    display: none;
+    grid-template-columns: repeat(5, 28px);
+    gap: 5px;
+}
+
+.color-selected {
+    border-color: rgb(182, 217, 247) !important;
+}
+
+.color-div i:hover {
+    border: 3px solid rgb(182, 217, 247);
+}
+
+.more-options-div {
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: white;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.position-change-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 2px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.position-change-btn:hover {
+    background-color: rgb(182, 217, 247);
+}
+
+#canvas-toolbar {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.toolbar-btn {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.toolbar-btn-selected {
+    color: rgb(103, 182, 251);
+}
+
+.toolbar-btn:hover {
+    color: rgb(103, 182, 251);
+}
+
+#pointer-btn {
+    font-size: 25px;
+    margin-left: 5px;
+
+}
+
+#pan-btn span {
+    font-size: 22px;
+}
+
+#draw-mode span {
+    font-size: 28px;
+}
+
+#shapes-btn span {
+    font-size: 28px;
+}
+
+#undo span,
+#redo span {
+    font-size: 28px;
+}
+
+.edit-pen-div {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+#eraser {
+    font-size: 25px;
+    padding: 2px 4px;
+    border-radius: 50%;
+    margin: 5px;
+    border: 3px solid white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#eraser:hover {
+    color: rgb(103, 182, 251);
+}
+
+.eraser-selected {
+    border: 3px solid rgb(103, 182, 251) !important;
+    color: rgb(103, 182, 251);
+}
+
+.stroke-colors {
+    display: grid;
+    grid-template-columns: repeat(4, 28px);
+    gap: 7px;
+}
+
+.stroke-colors i {
+    font-size: 20px;
+    padding: 1px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid rgb(255, 255, 255);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.stroke-colors i:hover {
+    border: 3px solid rgb(182, 217, 247);
+}
+
+.stroke-color-selected {
+    border-color: rgb(182, 217, 247) !important;
+}
+
+#close-pen-options {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+#close-pen-options:hover {
+    color: rgb(103, 182, 251);
+}
+
+.shape-selection-div {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+#draw-triangle {
+    transform: translateY(-5px)
+}
+
+.zoom-level-display-div {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: none;
+    background-color: rgb(85, 85, 85);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.5;
+
+    transition: opacity 0.5s ease-in-out;
+
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* slider */
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(103, 182, 251);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(103, 182, 251);
+    cursor: pointer;
+}
