@@ -3,6 +3,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+    --accent-color: rgb(103, 182, 251);
+    --accent-color-light: rgb(182, 217, 247);
+}
 
 .canvas-container {
     /* dot grid */
@@ -49,13 +53,13 @@
 }
 
 .controls-toolbar .control-btn:hover {
-    background-color: rgb(182, 217, 247);
+    background-color: var(--accent-color-light);
 }
 
 
 
 .controls-toolbar .selected-btn {
-    background-color: rgb(182, 217, 247) !important;
+    background-color: var(--accent-color-light) !important;
 }
 
 .color-div {
@@ -91,11 +95,11 @@
 }
 
 .color-selected {
-    border-color: rgb(182, 217, 247) !important;
+    border-color: var(--accent-color-light) !important;
 }
 
 .color-div i:hover {
-    border: 3px solid rgb(182, 217, 247);
+    border: 3px solid var(--accent-color-light);
 }
 
 .more-options-div {
@@ -120,7 +124,7 @@
 }
 
 .position-change-btn:hover {
-    background-color: rgb(182, 217, 247);
+    background-color: var(--accent-color-light);
 }
 
 #canvas-toolbar {
@@ -148,11 +152,11 @@
 }
 
 .toolbar-btn-selected {
-    color: rgb(103, 182, 251);
+    color: var(--accent-color);
 }
 
 .toolbar-btn:hover {
-    color: rgb(103, 182, 251);
+    color: var(--accent-color);
 }
 
 #pointer-btn {
@@ -208,12 +212,12 @@
 }
 
 #eraser:hover {
-    color: rgb(103, 182, 251);
+    color: var(--accent-color);
 }
 
 .eraser-selected {
-    border: 3px solid rgb(103, 182, 251) !important;
-    color: rgb(103, 182, 251);
+    border: 3px solid var(--accent-color) !important;
+    color: var(--accent-color);
 }
 
 .stroke-colors {
@@ -233,11 +237,11 @@
 }
 
 .stroke-colors i:hover {
-    border: 3px solid rgb(182, 217, 247);
+    border: 3px solid var(--accent-color);
 }
 
 .stroke-color-selected {
-    border-color: rgb(182, 217, 247) !important;
+    border-color: var(--accent-color) !important;
 }
 
 #close-pen-options {
@@ -246,7 +250,7 @@
 }
 
 #close-pen-options:hover {
-    color: rgb(103, 182, 251);
+    color: var(--accent-color);
 }
 
 .shape-selection-div {
@@ -317,7 +321,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: rgb(103, 182, 251);
+    background-color: var(--accent-color);
     cursor: pointer;
 }
 
@@ -325,6 +329,6 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: rgb(103, 182, 251);
+    background-color: var(--accent-color);
     cursor: pointer;
 }
