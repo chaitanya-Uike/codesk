@@ -308,13 +308,7 @@ class DrawingPad {
             let ops = selObjects.map(selObj => {
                 const index = this.canvas.getObjects().indexOf(selObj)
                 const newProps = {
-                    angle: selObj.angle,
-                    top: selObj.top,
-                    left: selObj.left,
-                    width: selObj.width,
-                    height: selObj.height,
-                    scaleX: selObj.scaleX,
-                    scaleY: selObj.scaleY,
+                    ...selObj
                 }
                 return { p: ['canvas', index, 'props'], od: this.doc.data.canvas[index].props, oi: newProps }
             })
@@ -327,22 +321,14 @@ class DrawingPad {
                 for (let i = 0; i < selObjects.length; i++) {
                     const obj = activeObject.objects[i]
                     selObjects[i].set({
-                        angle: obj.angle,
-                        top: obj.top,
-                        left: obj.left,
-                        width: obj.width,
-                        height: obj.height,
+                        ...obj
                     }).setCoords()
                 }
 
                 // create a new selection object based on original selection object
                 sel = new fabric.ActiveSelection(selObjects, {
                     canvas: this.canvas,
-                    angle: activeObject.angle,
-                    width: activeObject.width,
-                    height: activeObject.height,
-                    left: activeObject.left,
-                    top: activeObject.top,
+                    ...activeObject
                 })
             } else {
                 sel = selObjects[0]
