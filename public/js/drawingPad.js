@@ -288,7 +288,7 @@ class DrawingPad {
             if (path.globalCompositeOperation === 'destination-out')
                 return
 
-            path.id = Module.uuidv4()
+            path.id = new Module.ObjectID().toString()
             // convert the path object to a canvas object
             path = this.getFabricObject(path)
             const op = { p: ['canvas', this.doc.data.canvas.length], li: this.serializeFabricObject(path, true) }
@@ -388,7 +388,7 @@ class DrawingPad {
             else if (this.isDrawingTriangle)
                 shape = this.extendFabricObject(new fabric.Triangle(props))
 
-            shape.id = Module.uuidv4()
+            shape.id = new Module.ObjectID().toString()
 
             this.canvas.add(shape);
 

@@ -5,14 +5,13 @@ const Quill = require('quill')
 const QuillCursors = require('quill-cursors')
 const tinycolor = require('tinycolor2')
 const ObjectID = require('bson-objectid')
-const { v4: uuidv4 } = require('uuid')
 const { io } = require("socket.io-client");
 
 // register rich text
 sharedb.types.register(richText.type)
 
 // initializing sharedb and getting connection object
-const socket = new ReconnectingWebSocket('wss://' + window.location.host)
+const socket = new ReconnectingWebSocket('ws://' + window.location.host)
 const connection = new sharedb.Connection(socket)
 
 // Quill setup
@@ -43,5 +42,4 @@ module.exports = {
     tinycolor,
     ObjectID,
     io,
-    uuidv4
 }
