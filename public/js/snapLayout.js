@@ -856,7 +856,8 @@ class SnapLayout {
 
             for (const key in this.windowsList) {
                 const window = this.windowsList[key]
-                if (window.snapTo !== snapPos.none) {
+                if (window.snapTo !== snapPos.none && !window.maximised) {
+                    console.log('here');
                     this.snapwindow(window, window.snapTo)
                 }
             }
