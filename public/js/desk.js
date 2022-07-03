@@ -1,6 +1,17 @@
+const wait = (delay = 0) => {
+    return new Promise((resolve) => setTimeout(resolve, delay))
+}
+
+window.addEventListener('load', () => {
+    wait(2000).then(() => {
+        document.getElementById('main-loader').style.display = 'none'
+    })
+})
+
+
+const socket = Module.io()
 const userId = new Module.ObjectID().toString()
 const userName = 'chaitanya'
-const socket = Module.io()
 
 const TEXT_EDITOR_COLLECTION = 'text-editor'
 const CODE_EDITOR_COLLECTION = 'code-editor'
@@ -8,6 +19,7 @@ const DRAWING_PAD_COLLECTION = 'drawing-pad'
 
 const presence = new Presence(userId, userName, ROOM_ID)
 
+// connect all the editors to shareDB docs
 const textDoc = Module.connection.get(TEXT_EDITOR_COLLECTION, ROOM_ID)
 const codeDoc = Module.connection.get(CODE_EDITOR_COLLECTION, ROOM_ID)
 const drawingDoc = Module.connection.get(DRAWING_PAD_COLLECTION, ROOM_ID)
@@ -32,8 +44,6 @@ const textEditorOptions = {
     }
 }
 
-snapLayout.createWindow("Text-Editor", textEditorOptions)
-
 const codeEditorOptions = {
     onCreation: () => {
         codeEditor.initializeCodeEditor(() => {
@@ -48,8 +58,6 @@ const codeEditorOptions = {
     }
 }
 
-snapLayout.createWindow("Code-Editor", codeEditorOptions)
-
 const drawingPadOptions = {
     onCreation: () => {
         drawingPad.initializeDrawingPad()
@@ -57,6 +65,8 @@ const drawingPadOptions = {
 }
 
 
+snapLayout.createWindow("Text-Editor", textEditorOptions)
+snapLayout.createWindow("Code-Editor", codeEditorOptions)
 snapLayout.createWindow("WhiteBoard", drawingPadOptions)
 snapLayout.createWindow("Video-stream")
 

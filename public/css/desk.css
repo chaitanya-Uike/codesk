@@ -1,0 +1,667 @@
+#main-loader {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1B1B1B;
+    z-index: 10;
+}
+
+:root {
+    --size: 20vmin;
+    --border-width-fraction: 50;
+    --border-radius-fraction: 12;
+    --timing: ease;
+    --duration: 3s;
+    --delay: 100ms;
+    --f: rotateY(0deg);
+    --b: rotateY(-180deg);
+    --l: rotateY(-90deg);
+    --bt: rotateX(-90deg);
+    --r: rotateY(90deg);
+    --t: rotateX(90deg);
+    --z1: translateZ(var(--size));
+    --z2: translateZ(calc(var(--size) / 2));
+    --z0: translateZ(calc(1.041 * var(--size)));
+}
+
+#main-loader .container {
+    transform: scale(0.4);
+    position: relative;
+}
+
+#main-loader .container .cube {
+    transform: translate(-50%, -50%);
+}
+
+#main-loader .container .cube,
+#main-loader .container .cube * {
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+}
+
+#main-loader .container .cube .sides {
+    animation: rotate var(--duration) 0.8s var(--timing) infinite;
+    transform-style: preserve-3d;
+    transform: rotateX(-37.5deg) rotateY(45deg);
+}
+
+#main-loader .container .cube .sides * {
+    border: calc(var(--size) / var(--border-width-fraction)) solid;
+    border-color: #fff;
+    border-radius: calc(var(--size) / var(--border-radius-fraction));
+    background: rgba(255, 255, 255, 0.1);
+    transform-origin: 50% 50%;
+    animation-fill-mode: forwards;
+}
+
+#main-loader .container .cube .sides .right {
+    animation: right var(--duration) var(--delay) var(--timing) infinite;
+}
+
+#main-loader .container .cube .sides .bottom {
+    animation: bottom var(--duration) 0ms var(--timing) infinite;
+}
+
+#main-loader .container .cube .sides .left {
+    animation: left var(--duration) var(--delay) var(--timing) infinite;
+}
+
+#main-loader .container .cube .sides .front {
+    animation: front var(--duration) var(--delay) var(--timing) infinite;
+}
+
+#main-loader .container .cube .sides .back {
+    animation: back var(--duration) var(--delay) var(--timing) infinite;
+}
+
+#main-loader .container .cube .sides .top {
+    animation: top var(--duration) 0ms var(--timing) infinite;
+}
+
+@-moz-keyframes back {
+    0% {
+        transform: var(--b) var(--z1);
+    }
+
+    20% {
+        transform: var(--b) var(--z2);
+    }
+
+    70% {
+        transform: var(--b) var(--z2);
+    }
+
+    90% {
+        transform: var(--b) var(--z1);
+    }
+
+    100% {
+        transform: var(--b) var(--z1);
+    }
+}
+
+@-webkit-keyframes back {
+    0% {
+        transform: var(--b) var(--z1);
+    }
+
+    20% {
+        transform: var(--b) var(--z2);
+    }
+
+    70% {
+        transform: var(--b) var(--z2);
+    }
+
+    90% {
+        transform: var(--b) var(--z1);
+    }
+
+    100% {
+        transform: var(--b) var(--z1);
+    }
+}
+
+@-o-keyframes back {
+    0% {
+        transform: var(--b) var(--z1);
+    }
+
+    20% {
+        transform: var(--b) var(--z2);
+    }
+
+    70% {
+        transform: var(--b) var(--z2);
+    }
+
+    90% {
+        transform: var(--b) var(--z1);
+    }
+
+    100% {
+        transform: var(--b) var(--z1);
+    }
+}
+
+@keyframes back {
+    0% {
+        transform: var(--b) var(--z1);
+    }
+
+    20% {
+        transform: var(--b) var(--z2);
+    }
+
+    70% {
+        transform: var(--b) var(--z2);
+    }
+
+    90% {
+        transform: var(--b) var(--z1);
+    }
+
+    100% {
+        transform: var(--b) var(--z1);
+    }
+}
+
+@-moz-keyframes front {
+    0% {
+        transform: var(--f) var(--z1);
+    }
+
+    20% {
+        transform: var(--f) var(--z2);
+    }
+
+    70% {
+        transform: var(--f) var(--z2);
+    }
+
+    90% {
+        transform: var(--f) var(--z1);
+    }
+
+    100% {
+        transform: var(--f) var(--z1);
+    }
+}
+
+@-webkit-keyframes front {
+    0% {
+        transform: var(--f) var(--z1);
+    }
+
+    20% {
+        transform: var(--f) var(--z2);
+    }
+
+    70% {
+        transform: var(--f) var(--z2);
+    }
+
+    90% {
+        transform: var(--f) var(--z1);
+    }
+
+    100% {
+        transform: var(--f) var(--z1);
+    }
+}
+
+@-o-keyframes front {
+    0% {
+        transform: var(--f) var(--z1);
+    }
+
+    20% {
+        transform: var(--f) var(--z2);
+    }
+
+    70% {
+        transform: var(--f) var(--z2);
+    }
+
+    90% {
+        transform: var(--f) var(--z1);
+    }
+
+    100% {
+        transform: var(--f) var(--z1);
+    }
+}
+
+@keyframes front {
+    0% {
+        transform: var(--f) var(--z1);
+    }
+
+    20% {
+        transform: var(--f) var(--z2);
+    }
+
+    70% {
+        transform: var(--f) var(--z2);
+    }
+
+    90% {
+        transform: var(--f) var(--z1);
+    }
+
+    100% {
+        transform: var(--f) var(--z1);
+    }
+}
+
+@-moz-keyframes left {
+    0% {
+        transform: var(--l) var(--z1);
+    }
+
+    20% {
+        transform: var(--l) var(--z2);
+    }
+
+    70% {
+        transform: var(--l) var(--z2);
+    }
+
+    90% {
+        transform: var(--l) var(--z1);
+    }
+
+    100% {
+        transform: var(--l) var(--z1);
+    }
+}
+
+@-webkit-keyframes left {
+    0% {
+        transform: var(--l) var(--z1);
+    }
+
+    20% {
+        transform: var(--l) var(--z2);
+    }
+
+    70% {
+        transform: var(--l) var(--z2);
+    }
+
+    90% {
+        transform: var(--l) var(--z1);
+    }
+
+    100% {
+        transform: var(--l) var(--z1);
+    }
+}
+
+@-o-keyframes left {
+    0% {
+        transform: var(--l) var(--z1);
+    }
+
+    20% {
+        transform: var(--l) var(--z2);
+    }
+
+    70% {
+        transform: var(--l) var(--z2);
+    }
+
+    90% {
+        transform: var(--l) var(--z1);
+    }
+
+    100% {
+        transform: var(--l) var(--z1);
+    }
+}
+
+@keyframes left {
+    0% {
+        transform: var(--l) var(--z1);
+    }
+
+    20% {
+        transform: var(--l) var(--z2);
+    }
+
+    70% {
+        transform: var(--l) var(--z2);
+    }
+
+    90% {
+        transform: var(--l) var(--z1);
+    }
+
+    100% {
+        transform: var(--l) var(--z1);
+    }
+}
+
+@-moz-keyframes bottom {
+    0% {
+        transform: var(--bt) var(--z0);
+    }
+
+    20% {
+        transform: var(--bt) var(--z2);
+    }
+
+    70% {
+        transform: var(--bt) var(--z2);
+    }
+
+    90% {
+        transform: var(--bt) var(--z0);
+    }
+
+    100% {
+        transform: var(--bt) var(--z0);
+    }
+}
+
+@-webkit-keyframes bottom {
+    0% {
+        transform: var(--bt) var(--z0);
+    }
+
+    20% {
+        transform: var(--bt) var(--z2);
+    }
+
+    70% {
+        transform: var(--bt) var(--z2);
+    }
+
+    90% {
+        transform: var(--bt) var(--z0);
+    }
+
+    100% {
+        transform: var(--bt) var(--z0);
+    }
+}
+
+@-o-keyframes bottom {
+    0% {
+        transform: var(--bt) var(--z0);
+    }
+
+    20% {
+        transform: var(--bt) var(--z2);
+    }
+
+    70% {
+        transform: var(--bt) var(--z2);
+    }
+
+    90% {
+        transform: var(--bt) var(--z0);
+    }
+
+    100% {
+        transform: var(--bt) var(--z0);
+    }
+}
+
+@keyframes bottom {
+    0% {
+        transform: var(--bt) var(--z0);
+    }
+
+    20% {
+        transform: var(--bt) var(--z2);
+    }
+
+    70% {
+        transform: var(--bt) var(--z2);
+    }
+
+    90% {
+        transform: var(--bt) var(--z0);
+    }
+
+    100% {
+        transform: var(--bt) var(--z0);
+    }
+}
+
+@-moz-keyframes right {
+    0% {
+        transform: var(--r) var(--z1);
+    }
+
+    20% {
+        transform: var(--r) var(--z2);
+    }
+
+    70% {
+        transform: var(--r) var(--z2);
+    }
+
+    90% {
+        transform: var(--r) var(--z1);
+    }
+
+    100% {
+        transform: var(--r) var(--z1);
+    }
+}
+
+@-webkit-keyframes right {
+    0% {
+        transform: var(--r) var(--z1);
+    }
+
+    20% {
+        transform: var(--r) var(--z2);
+    }
+
+    70% {
+        transform: var(--r) var(--z2);
+    }
+
+    90% {
+        transform: var(--r) var(--z1);
+    }
+
+    100% {
+        transform: var(--r) var(--z1);
+    }
+}
+
+@-o-keyframes right {
+    0% {
+        transform: var(--r) var(--z1);
+    }
+
+    20% {
+        transform: var(--r) var(--z2);
+    }
+
+    70% {
+        transform: var(--r) var(--z2);
+    }
+
+    90% {
+        transform: var(--r) var(--z1);
+    }
+
+    100% {
+        transform: var(--r) var(--z1);
+    }
+}
+
+@keyframes right {
+    0% {
+        transform: var(--r) var(--z1);
+    }
+
+    20% {
+        transform: var(--r) var(--z2);
+    }
+
+    70% {
+        transform: var(--r) var(--z2);
+    }
+
+    90% {
+        transform: var(--r) var(--z1);
+    }
+
+    100% {
+        transform: var(--r) var(--z1);
+    }
+}
+
+@-moz-keyframes top {
+    0% {
+        transform: var(--t) var(--z0);
+    }
+
+    20% {
+        transform: var(--t) var(--z2);
+    }
+
+    70% {
+        transform: var(--t) var(--z2);
+    }
+
+    90% {
+        transform: var(--t) var(--z0);
+    }
+
+    100% {
+        transform: var(--t) var(--z0);
+    }
+}
+
+@-webkit-keyframes top {
+    0% {
+        transform: var(--t) var(--z0);
+    }
+
+    20% {
+        transform: var(--t) var(--z2);
+    }
+
+    70% {
+        transform: var(--t) var(--z2);
+    }
+
+    90% {
+        transform: var(--t) var(--z0);
+    }
+
+    100% {
+        transform: var(--t) var(--z0);
+    }
+}
+
+@-o-keyframes top {
+    0% {
+        transform: var(--t) var(--z0);
+    }
+
+    20% {
+        transform: var(--t) var(--z2);
+    }
+
+    70% {
+        transform: var(--t) var(--z2);
+    }
+
+    90% {
+        transform: var(--t) var(--z0);
+    }
+
+    100% {
+        transform: var(--t) var(--z0);
+    }
+}
+
+@keyframes top {
+    0% {
+        transform: var(--t) var(--z0);
+    }
+
+    20% {
+        transform: var(--t) var(--z2);
+    }
+
+    70% {
+        transform: var(--t) var(--z2);
+    }
+
+    90% {
+        transform: var(--t) var(--z0);
+    }
+
+    100% {
+        transform: var(--t) var(--z0);
+    }
+}
+
+@-moz-keyframes rotate {
+    0% {
+        transform: rotateX(-37.5deg) rotateY(45deg);
+    }
+
+    50% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+
+    100% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        transform: rotateX(-37.5deg) rotateY(45deg);
+    }
+
+    50% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+
+    100% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+}
+
+@-o-keyframes rotate {
+    0% {
+        transform: rotateX(-37.5deg) rotateY(45deg);
+    }
+
+    50% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+
+    100% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(-37.5deg) rotateY(45deg);
+    }
+
+    50% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+
+    100% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+}

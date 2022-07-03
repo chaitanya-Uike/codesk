@@ -340,7 +340,6 @@ class SnapLayout {
                 div.style.display = 'none'
 
                 if (this.windowsList[div.id].onClose) {
-                    console.log("here")
                     this.windowsList[div.id].onClose()
                 }
 
@@ -857,7 +856,6 @@ class SnapLayout {
             for (const key in this.windowsList) {
                 const window = this.windowsList[key]
                 if (window.snapTo !== snapPos.none && !window.maximised) {
-                    console.log('here');
                     this.snapwindow(window, window.snapTo)
                 }
             }
