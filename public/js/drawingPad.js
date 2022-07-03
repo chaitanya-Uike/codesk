@@ -321,14 +321,26 @@ class DrawingPad {
                 for (let i = 0; i < selObjects.length; i++) {
                     const obj = activeObject.objects[i]
                     selObjects[i].set({
-                        ...obj
+                        angle: obj.angle,
+                        top: obj.top,
+                        left: obj.left,
+                        width: obj.width,
+                        height: obj.height,
+                        scaleX: obj.scaleX,
+                        scaleY: obj.scaleY
                     }).setCoords()
                 }
 
                 // create a new selection object based on original selection object
                 sel = new fabric.ActiveSelection(selObjects, {
                     canvas: this.canvas,
-                    ...activeObject
+                    angle: activeObject.angle,
+                    width: activeObject.width,
+                    height: activeObject.height,
+                    left: activeObject.left,
+                    top: activeObject.top,
+                    scaleX: activeObject.scaleX,
+                    scaleY: activeObject.scaleY
                 })
             } else {
                 sel = selObjects[0]
