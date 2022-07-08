@@ -308,7 +308,13 @@ class DrawingPad {
             let ops = selObjects.map(selObj => {
                 const index = this.canvas.getObjects().indexOf(selObj)
                 const newProps = {
-                    ...selObj
+                    angle: selObj.angle,
+                    top: selObj.top,
+                    left: selObj.left,
+                    width: selObj.width,
+                    height: selObj.height,
+                    scaleX: selObj.scaleX,
+                    scaleY: selObj.scaleY
                 }
                 return { p: ['canvas', index, 'props'], od: this.doc.data.canvas[index].props, oi: newProps }
             })
