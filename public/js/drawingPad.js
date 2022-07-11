@@ -45,7 +45,7 @@ class DrawingPad {
         this.setDrawingBrush('#1F1F1F', 5, 3)
 
         // extra canvas styling
-        this.controlsStyling('rgb(103, 182, 251)', 'rgb(103, 182, 251)')
+        this.boundingBoxStyling('rgb(103, 182, 251)', 'rgb(103, 182, 251)')
         this.selectionStyling('rgba(182, 217, 247, 0.437)', '#646FD4')
 
         // add zooming and panning functionality
@@ -602,7 +602,7 @@ class DrawingPad {
         this.canvas.freeDrawingBrush.decimate = decimate
     }
 
-    controlsStyling(cornerColor, borderColor) {
+    boundingBoxStyling(cornerColor, borderColor) {
         fabric.Object.prototype.set({
             transparentCorners: false,
             cornerStyle: 'circle',
