@@ -6,12 +6,11 @@ class AceShareDBAdapter {
     aceToQuillDelta(delta) {
         let ops = []
         // if operation is performed on 0th index skip retain
-        if (delta.start.row !== 0 || delta.start.column !== 0) {
-            let retainOp = {}
-            const pos = this.aceDoc.positionToIndex(delta.start)
-            retainOp.retain = pos
-            ops.push(retainOp)
-        }
+        let retainOp = {}
+        const pos = this.aceDoc.positionToIndex(delta.start)
+        retainOp.retain = pos
+        ops.push(retainOp)
+
         if (delta.action === 'insert') {
             let insertOp = {}
             const str = delta.lines.join('\n')
