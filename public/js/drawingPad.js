@@ -116,6 +116,9 @@ class DrawingPad {
                 if (op.p[2] && op.p[2] === 'eraser') {
                     const index = op.p[1]
                     const target = this.canvas.getObjects()[index]
+
+                    console.log('eraser li:', index, target);
+
                     const eraserObj = this.getFabricObject(op.li)
                     target.eraser._objects.splice(op.p[4], 0, eraserObj)
                     // need to do this so that the object rerenders with erasers effect
@@ -156,9 +159,7 @@ class DrawingPad {
                 const prop = op.p[2]
                 const target = this.canvas.getObjects()[index]
 
-                if (!target)
-                    return;
-
+                console.log('mod :', index, prop, target);
 
                 let isInActiveSelection = false
                 // if target is in active selection remove it from active selection and add it back again after applying changes
@@ -198,6 +199,9 @@ class DrawingPad {
             else if (op.oi !== undefined && op.od === undefined) {
                 const index = op.p[1]
                 const target = this.canvas.getObjects()[index]
+
+                console.log('first time erasing:', index, target);
+
                 const eraserObj = { ...op.oi }
                 target.eraser = this.getFabricObject(eraserObj)
                 // need to do this so that the object rerenders with erasers effect
@@ -207,6 +211,9 @@ class DrawingPad {
             else if (op.od !== undefined && op.oi === undefined) {
                 const index = op.p[1]
                 const target = this.canvas.getObjects()[index]
+
+                console.log('undoing erasure', index, target);
+
                 delete target.eraser
                 // need to do this so that the object rerenders with erasers effect
                 target.dirty = true
@@ -1178,6 +1185,7 @@ class DrawingPad {
                 // // add source property to prevent getting added back onto the undo stack
                 this.canvas.fire('canvas:changed', { op: invertedOps, source: 'undo' })
                 // // apply to canvas
+                console.log('invertedOp', invertedOps);
                 this.applyOps(invertedOps)
 
                 // // add the op to redo stack
