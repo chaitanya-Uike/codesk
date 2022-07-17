@@ -1187,7 +1187,7 @@ class DrawingPad {
 
                 console.log('op', op);
 
-                const invertedOps = this.invertOps(op)
+                const invertedOps = (this.invertOps(op)).reverse()
 
                 // // add source property to prevent getting added back onto the undo stack
                 this.canvas.fire('canvas:changed', { op: invertedOps, source: 'undo' })
