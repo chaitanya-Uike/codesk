@@ -1170,11 +1170,6 @@ class DrawingPad {
         undoBtn.addEventListener('click', () => {
             closeToolBarDivs()
 
-            if (this.rendering) {
-                console.log('skipped')
-                return
-            }
-
             try {
                 const op = this.removeFromUndoStack()
 
@@ -1197,11 +1192,6 @@ class DrawingPad {
 
         redoBtn.addEventListener('click', () => {
             closeToolBarDivs()
-
-            if (this.rendering) {
-                console.log('skipped')
-                return
-            }
 
             try {
                 const op = this.removeFromRedoStack()
