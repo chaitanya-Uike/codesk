@@ -130,7 +130,7 @@ class DrawingPad {
                     const index = op.p[1]
                     this.canvas.insertAt(canvasObject, index, false)
                 }
-
+                console.log('1')
             }
             // delete an object
             else if (op.ld !== undefined) {
@@ -152,6 +152,8 @@ class DrawingPad {
 
                     this.canvas.remove(target)
                 }
+
+                console.log('2')
             }
             // modifying a property
             else if (op.oi !== undefined && op.od !== undefined) {
@@ -186,6 +188,7 @@ class DrawingPad {
                     else
                         this.canvas.setActiveObject(target)
                 }
+                console.log('3')
             }
             // position change
             else if (op.lm !== undefined) {
@@ -194,6 +197,8 @@ class DrawingPad {
                 const target = this.canvas.getObjects()[idx1]
 
                 target.moveTo(idx2)
+
+                console.log('4')
             }
             // first time erasing
             else if (op.oi !== undefined && op.od === undefined) {
@@ -206,6 +211,8 @@ class DrawingPad {
                 target.eraser = this.getFabricObject(eraserObj)
                 // need to do this so that the object rerenders with erasers effect
                 target.dirty = true
+
+                console.log('5')
             }
             // undoing erasure
             else if (op.od !== undefined && op.oi === undefined) {
@@ -217,6 +224,7 @@ class DrawingPad {
                 delete target.eraser
                 // need to do this so that the object rerenders with erasers effect
                 target.dirty = true
+                console.log('6')
             }
 
             this.canvas.renderAll()
