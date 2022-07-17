@@ -6,6 +6,7 @@ const QuillCursors = require('quill-cursors')
 const tinycolor = require('tinycolor2')
 const ObjectID = require('bson-objectid')
 const { io } = require("socket.io-client");
+var cloneDeep = require('lodash.clonedeep');
 
 // register rich text
 sharedb.types.register(richText.type)
@@ -42,4 +43,5 @@ module.exports = {
     tinycolor,
     ObjectID,
     io,
+    cloneDeep
 }

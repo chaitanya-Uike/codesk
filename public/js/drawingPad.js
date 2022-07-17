@@ -543,13 +543,13 @@ class DrawingPad {
             // inverting erasure
             else if (op.oi && op.od === undefined) {
                 // send copy of the object to prevent changing the original object
-                invertedOp = { p: op.p, od: { ...op.oi } }
+                invertedOp = { p: op.p, od: op.oi }
             }
             else if (op.od && op.oi === undefined) {
                 // send copy of the object to prevent changing the original object
-                invertedOp = { p: op.p, oi: { ...op.od } }
+                invertedOp = { p: op.p, oi: op.od }
             }
-            return invertedOp
+            return Module.cloneDeep(invertedOp)
         })
 
         return invertedOps
@@ -577,7 +577,7 @@ class DrawingPad {
         if (this.undoStack.length === this.undoLimit) {
             this.undoStack = this.undoStack.slice(1)
         }
-        this.undoStack.push(op)
+        this.undoStack.push(Module.cloneDeep(op))
     }
 
     removeFromUndoStack() {
@@ -591,7 +591,7 @@ class DrawingPad {
         if (this.redoStack.length === this.redoLimit) {
             this.redoStack = this.redoStack.slice(1)
         }
-        this.redoStack.push(op)
+        this.redoStack.push(Module.cloneDeep(op))
     }
 
     removeFromRedoStack(op) {
