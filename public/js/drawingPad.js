@@ -1150,44 +1150,38 @@ class DrawingPad {
         undoBtn.addEventListener('click', () => {
             closeToolBarDivs()
 
-            // using a set timeout so that undo operations get performed after it is applied to canvas
-            setTimeout(() => {
-                try {
-                    const op = this.removeFromUndoStack()
+            try {
+                const op = this.removeFromUndoStack()
 
-                    if (!op) return
+                if (!op) return
 
-                    const invertedOps = this.invertOps(op)
+                const invertedOps = this.invertOps(op)
 
-                    // // add source property to prevent getting added back onto the undo stack
-                    this.canvas.fire('canvas:changed', { op: invertedOps, source: 'undo' })
-                    // // apply to canvas
-                    this.applyOps(invertedOps)
+                // // add source property to prevent getting added back onto the undo stack
+                this.canvas.fire('canvas:changed', { op: invertedOps, source: 'undo' })
+                // // apply to canvas
+                this.applyOps(invertedOps)
 
-                    // // add the op to redo stack
-                    this.addToRedoStack(op)
-                } catch (error) {
-                    console.log(error)
-                }
-            }, 0);
+                // // add the op to redo stack
+                this.addToRedoStack(op)
+            } catch (error) {
+                console.log(error)
+            }
         })
 
         redoBtn.addEventListener('click', () => {
             closeToolBarDivs()
 
-            // using a set timeout so that undo operations get performed after it is applied to canvas
-            setTimeout(() => {
-                try {
-                    const op = this.removeFromRedoStack()
-                    if (!op) return
+            try {
+                const op = this.removeFromRedoStack()
+                if (!op) return
 
-                    this.canvas.fire('canvas:changed', { op })
+                this.canvas.fire('canvas:changed', { op })
 
-                    this.applyOps(op)
-                } catch (error) {
-                    console.log(error)
-                }
-            }, 0);
+                this.applyOps(op)
+            } catch (error) {
+                console.log(error)
+            }
         })
 
         const closeToolBarDivs = () => {
