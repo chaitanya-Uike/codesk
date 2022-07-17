@@ -147,6 +147,11 @@ class DrawingPad {
                 const index = op.p[1]
                 const prop = op.p[2]
                 const target = this.canvas.getObjects()[index]
+
+                if (!target)
+                    return;
+
+
                 let isInActiveSelection = false
                 // if target is in active selection remove it from active selection and add it back again after applying changes
                 // being in active selection messes up the position props
