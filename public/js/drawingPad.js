@@ -138,11 +138,13 @@ class DrawingPad {
                 const target = this.canvas.getObjects()[index]
                 // for undoing erasure
                 if (op.p[2] && op.p[2] === 'eraser') {
+                    console.log('there')
                     target.eraser._objects.splice(op.p[4], 1)
                     // need to do this so that the object rerenders with erasers effect
                     target.dirty = true
                     target.eraser.dirty = true
                 } else {
+                    console.log('here')
                     // if the object being removed is in activeSelection then remove it from activeSelection
                     if (this.canvas.getActiveObjects().indexOf(target) !== -1) {
                         // do this only if the object being removed is in a multi-selection
