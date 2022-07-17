@@ -24,22 +24,18 @@ class AceShareDBAdapter {
             deleteOp.delete = len
             ops.push(deleteOp)
         }
-
-        console.log('acetoQuill', ops);
-
         return { ops }
     }
 
-    QuillToAceDelta(ops) {
-        let deltas = [];
+    applyOps(ops) {
         let pointer = 0;
-
         ops.forEach(operation => {
             let delta = {}
-
             delta.start = this.aceDoc.indexToPosition(pointer) || { row: 0, column: 0 }
-            if (operation.retain)
+
+            if (operation.retain) {
                 pointer += operation.retain
+            }
             else if (operation.insert) {
                 delta.action = 'insert'
                 delta.lines = operation.insert.split('\n')
@@ -54,27 +50,15 @@ class AceShareDBAdapter {
                         column: delta.lines[delta.lines.length - 1].length,
                     }
                 }
-                deltas.push(delta)
+                this.aceDoc.applyDeltas([delta])
+                pointer += operation.insert.length
             }
             else {
                 delta.action = 'remove'
                 const count = operation.delete
                 delta.end = this.aceDoc.indexToPosition(pointer + count)
-                pointer += count
-                deltas.push(delta)
+                this.aceDoc.applyDeltas([delta])
             }
         })
-
-        console.log('quillToAce', deltas)
-
-        return deltas
-    }
-
-    applyOps(ops) {
-        console.log('sharedb :', ops);
-        // converts the ops provided by shareDB to Ace delta and applies them
-        const deltas = this.QuillToAceDelta(ops)
-        // apply the deltas
-        this.aceDoc.applyDeltas(deltas)
     }
 }

@@ -30,9 +30,9 @@ class TextEditor {
 
         // this.quill.setContents(this.doc.data)
 
+        this.quill.updateContents([{ insert: '1234' }])
+        this.quill.updateContents([{ retain: 2 }, { insert: '56' }, { delete: 2 }, { insert: '78' }])
 
-        this.quill.updateContents([{ insert: 'c' }])
-        this.quill.updateContents([{ insert: 'const' }, { delete: 1 }])
 
         this.submitLocalChanges()
 
