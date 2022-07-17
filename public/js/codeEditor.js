@@ -74,13 +74,7 @@ class CodeEditor {
             }
             const op = this.adapter.aceToQuillDelta(delta)
 
-            this.doc.whenNothingPending((err) => {
-                if (err) {
-                    console.log(err);
-                    return
-                }
-                this.doc.submitOp(op)
-            })
+            this.doc.submitOp(op)
         })
     }
 
