@@ -19,7 +19,6 @@ class DrawingPad {
         this.isDrawingRect = false
         this.isDrawingCircle = false
         this.isDrawingTriangle = false
-        this.rendering = false
     }
 
     initializeDrawingPad(callback) {
@@ -69,12 +68,6 @@ class DrawingPad {
         this.handleObjectModification()
         this.handleErasion()
         this.handleShapeDrawing()
-
-        this.canvas.on('after:render', () => {
-            if (this.rendering) {
-                this.rendering = false
-            }
-        })
     }
 
     setContents(content) {
@@ -108,7 +101,6 @@ class DrawingPad {
     }
 
     applyOps(ops) {
-        this.rendering = true
         ops.forEach(op => {
             // insert new object
             if (op.li !== undefined) {
@@ -116,8 +108,6 @@ class DrawingPad {
                 if (op.p[2] && op.p[2] === 'eraser') {
                     const index = op.p[1]
                     const target = this.canvas.getObjects()[index]
-
-                    console.log('eraser li:', index, target, Module.cloneDeep(this.canvas.getObjects()));
 
                     const eraserObj = this.getFabricObject(op.li)
                     target.eraser._objects.splice(op.p[4], 0, eraserObj)
@@ -130,7 +120,6 @@ class DrawingPad {
                     const index = op.p[1]
                     this.canvas.insertAt(canvasObject, index, false)
                 }
-                console.log('1')
             }
             // delete an object
             else if (op.ld !== undefined) {
@@ -138,13 +127,11 @@ class DrawingPad {
                 const target = this.canvas.getObjects()[index]
                 // for undoing erasure
                 if (op.p[2] && op.p[2] === 'eraser') {
-                    console.log('there')
                     target.eraser._objects.splice(op.p[4], 1)
                     // need to do this so that the object rerenders with erasers effect
                     target.dirty = true
                     target.eraser.dirty = true
                 } else {
-                    console.log('here')
                     // if the object being removed is in activeSelection then remove it from activeSelection
                     if (this.canvas.getActiveObjects().indexOf(target) !== -1) {
                         // do this only if the object being removed is in a multi-selection
@@ -154,16 +141,12 @@ class DrawingPad {
 
                     this.canvas.remove(target)
                 }
-
-                console.log('2')
             }
             // modifying a property
             else if (op.oi !== undefined && op.od !== undefined) {
                 const index = op.p[1]
                 const prop = op.p[2]
                 const target = this.canvas.getObjects()[index]
-
-                console.log('mod :', index, prop, target, Module.cloneDeep(this.canvas.getObjects()));
 
                 let isInActiveSelection = false
                 // if target is in active selection remove it from active selection and add it back again after applying changes
@@ -190,7 +173,6 @@ class DrawingPad {
                     else
                         this.canvas.setActiveObject(target)
                 }
-                console.log('3')
             }
             // position change
             else if (op.lm !== undefined) {
@@ -199,34 +181,25 @@ class DrawingPad {
                 const target = this.canvas.getObjects()[idx1]
 
                 target.moveTo(idx2)
-
-                console.log('4')
             }
             // first time erasing
             else if (op.oi !== undefined && op.od === undefined) {
                 const index = op.p[1]
                 const target = this.canvas.getObjects()[index]
 
-                console.log('first time erasing:', index, target, Module.cloneDeep(this.canvas.getObjects()));
-
                 const eraserObj = { ...op.oi }
                 target.eraser = this.getFabricObject(eraserObj)
                 // need to do this so that the object rerenders with erasers effect
                 target.dirty = true
-
-                console.log('5')
             }
             // undoing erasure
             else if (op.od !== undefined && op.oi === undefined) {
                 const index = op.p[1]
                 const target = this.canvas.getObjects()[index]
 
-                console.log('undoing erasure', index, target, Module.cloneDeep(this.canvas.getObjects()));
-
                 delete target.eraser
                 // need to do this so that the object rerenders with erasers effect
                 target.dirty = true
-                console.log('6')
             }
 
             this.canvas.renderAll()
@@ -1185,14 +1158,13 @@ class DrawingPad {
 
                 if (!op) return
 
-                console.log('op', op);
-
+                // need to reverse the inverted ops array so that the order in which they were applied is preserved
+                // spent a whole day fixing this bug lol :(
                 const invertedOps = (this.invertOps(op)).reverse()
 
                 // // add source property to prevent getting added back onto the undo stack
                 this.canvas.fire('canvas:changed', { op: invertedOps, source: 'undo' })
                 // // apply to canvas
-                console.log('invertedOp', invertedOps);
                 this.applyOps(invertedOps)
 
                 // // add the op to redo stack
