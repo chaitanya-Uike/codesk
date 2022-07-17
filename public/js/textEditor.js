@@ -28,7 +28,11 @@ class TextEditor {
 
         this.setupTooltip()
 
-        this.quill.setContents(this.doc.data)
+        // this.quill.setContents(this.doc.data)
+
+
+        this.quill.updateContents([{ insert: 'c' }])
+        this.quill.updateContents([{ insert: 'const' }, { delete: 1 }])
 
         this.submitLocalChanges()
 
