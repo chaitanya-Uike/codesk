@@ -1185,6 +1185,8 @@ class DrawingPad {
 
                 if (!op) return
 
+                console.log('op', op);
+
                 const invertedOps = this.invertOps(op)
 
                 // // add source property to prevent getting added back onto the undo stack
