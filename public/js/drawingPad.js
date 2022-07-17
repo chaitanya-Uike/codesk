@@ -117,7 +117,7 @@ class DrawingPad {
                     const index = op.p[1]
                     const target = this.canvas.getObjects()[index]
 
-                    console.log('eraser li:', index, target);
+                    console.log('eraser li:', index, target, this.canvas.getObjects());
 
                     const eraserObj = this.getFabricObject(op.li)
                     target.eraser._objects.splice(op.p[4], 0, eraserObj)
@@ -159,7 +159,7 @@ class DrawingPad {
                 const prop = op.p[2]
                 const target = this.canvas.getObjects()[index]
 
-                console.log('mod :', index, prop, target);
+                console.log('mod :', index, prop, target, this.canvas.getObjects());
 
                 let isInActiveSelection = false
                 // if target is in active selection remove it from active selection and add it back again after applying changes
@@ -200,7 +200,7 @@ class DrawingPad {
                 const index = op.p[1]
                 const target = this.canvas.getObjects()[index]
 
-                console.log('first time erasing:', index, target);
+                console.log('first time erasing:', index, target, this.canvas.getObjects());
 
                 const eraserObj = { ...op.oi }
                 target.eraser = this.getFabricObject(eraserObj)
@@ -212,7 +212,7 @@ class DrawingPad {
                 const index = op.p[1]
                 const target = this.canvas.getObjects()[index]
 
-                console.log('undoing erasure', index, target);
+                console.log('undoing erasure', index, target, this.canvas.getObjects());
 
                 delete target.eraser
                 // need to do this so that the object rerenders with erasers effect
