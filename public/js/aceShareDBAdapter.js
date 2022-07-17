@@ -6,11 +6,12 @@ class AceShareDBAdapter {
     aceToQuillDelta(delta) {
         let ops = []
         // if operation is performed on 0th index skip retain
-        let retainOp = {}
-        const pos = this.aceDoc.positionToIndex(delta.start)
-        retainOp.retain = pos
-        ops.push(retainOp)
-
+        if (delta.start.row !== 0 || delta.start.column !== 0) {
+            let retainOp = {}
+            const pos = this.aceDoc.positionToIndex(delta.start)
+            retainOp.retain = pos
+            ops.push(retainOp)
+        }
         if (delta.action === 'insert') {
             let insertOp = {}
             const str = delta.lines.join('\n')
@@ -23,6 +24,8 @@ class AceShareDBAdapter {
             deleteOp.delete = len
             ops.push(deleteOp)
         }
+
+        console.log('acetoQuill', ops);
 
         return { ops }
     }
@@ -62,10 +65,13 @@ class AceShareDBAdapter {
             }
         })
 
+        console.log('quillToAce', deltas)
+
         return deltas
     }
 
     applyOps(ops) {
+        console.log('sharedb :', ops);
         // converts the ops provided by shareDB to Ace delta and applies them
         const deltas = this.QuillToAceDelta(ops)
         // apply the deltas

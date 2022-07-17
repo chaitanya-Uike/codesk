@@ -74,8 +74,6 @@ class CodeEditor {
             }
             const op = this.adapter.aceToQuillDelta(delta)
 
-            console.log(op);
-
             this.doc.whenNothingPending((err) => {
                 if (err) {
                     console.log(err);
@@ -93,8 +91,6 @@ class CodeEditor {
             }
             // to prevent changes made programatically to trigger on change event
             // change is a synchronus event in ace so this works
-
-            console.log(ops.ops)
 
             this.ignorechange = true
             this.adapter.applyOps(ops.ops)
