@@ -19,6 +19,7 @@ class DrawingPad {
         this.isDrawingRect = false
         this.isDrawingCircle = false
         this.isDrawingTriangle = false
+        this.rendering = false
     }
 
     initializeDrawingPad(callback) {
@@ -68,6 +69,12 @@ class DrawingPad {
         this.handleObjectModification()
         this.handleErasion()
         this.handleShapeDrawing()
+
+        this.canvas.on('after:render', () => {
+            if (this.rendering) {
+                this.rendering = false
+            }
+        })
     }
 
     setContents(content) {
@@ -101,6 +108,7 @@ class DrawingPad {
     }
 
     applyOps(ops) {
+        this.rendering = true
         ops.forEach(op => {
             // insert new object
             if (op.li !== undefined) {
@@ -1155,6 +1163,11 @@ class DrawingPad {
         undoBtn.addEventListener('click', () => {
             closeToolBarDivs()
 
+            if (this.rendering) {
+                console.log('skipped')
+                return
+            }
+
             try {
                 const op = this.removeFromUndoStack()
 
@@ -1176,6 +1189,11 @@ class DrawingPad {
 
         redoBtn.addEventListener('click', () => {
             closeToolBarDivs()
+
+            if (this.rendering) {
+                console.log('skipped')
+                return
+            }
 
             try {
                 const op = this.removeFromRedoStack()
