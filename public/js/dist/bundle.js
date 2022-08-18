@@ -27157,53 +27157,54 @@ else {
 })(Math);
 
 },{}],62:[function(require,module,exports){
-const ReconnectingWebSocket = require('reconnecting-websocket')
-const sharedb = require('sharedb/lib/client')
-const richText = require('rich-text')
-const Quill = require('quill')
-const QuillCursors = require('quill-cursors')
-const tinycolor = require('tinycolor2')
-const ObjectID = require('bson-objectid')
+const ReconnectingWebSocket = require("reconnecting-websocket");
+const sharedb = require("sharedb/lib/client");
+const richText = require("rich-text");
+const Quill = require("quill");
+const QuillCursors = require("quill-cursors");
+const tinycolor = require("tinycolor2");
+const ObjectID = require("bson-objectid");
 const { io } = require("socket.io-client");
-var cloneDeep = require('lodash.clonedeep');
+var cloneDeep = require("lodash.clonedeep");
 
 // register rich text
-sharedb.types.register(richText.type)
+sharedb.types.register(richText.type);
 
 // initializing sharedb and getting connection object
-const socket = new ReconnectingWebSocket('wss://' + window.location.host)
-const connection = new sharedb.Connection(socket)
+const socket = new ReconnectingWebSocket("wss://" + window.location.host);
+const connection = new sharedb.Connection(socket);
 
 // Quill setup
-Quill.register('modules/cursors', QuillCursors)
-const Font = Quill.import("formats/font")
-const Size = Quill.import('attributors/style/size')
+Quill.register("modules/cursors", QuillCursors);
+const Font = Quill.import("formats/font");
+const Size = Quill.import("attributors/style/size");
 
 // register fonts
 Font.whitelist = [
-    "arial",
-    "roboto",
-    "montserrat",
-    "helvetica",
-    "poppins",
-    "merriweather",
-    "playfair"
-]
-Quill.register(Font, true)
+  "arial",
+  "roboto",
+  "montserrat",
+  "helvetica",
+  "poppins",
+  "merriweather",
+  "playfair",
+];
+Quill.register(Font, true);
 
 // register font sizes
-const fontSizes = ['14px', '16px', '18px', '22px', '28px', '36px']
+const fontSizes = ["14px", "16px", "18px", "22px", "28px", "36px"];
 Size.whitelist = fontSizes;
 Quill.register(Size, true);
 
 module.exports = {
-    connection,
-    Quill,
-    tinycolor,
-    ObjectID,
-    io,
-    cloneDeep
-}
+  connection,
+  Quill,
+  tinycolor,
+  ObjectID,
+  io,
+  cloneDeep,
+};
+
 },{"bson-objectid":5,"lodash.clonedeep":31,"quill":39,"quill-cursors":38,"reconnecting-websocket":40,"rich-text":41,"sharedb/lib/client":65,"socket.io-client":49,"tinycolor2":61}],63:[function(require,module,exports){
 var Doc = require('./doc');
 var Query = require('./query');

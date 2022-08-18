@@ -9,7 +9,7 @@ body {
     display: grid;
     grid-template-columns: auto 1fr;
 
-    background-image: url("../assets/wallpaper.jpg");
+    background-image: url("../assets/wallpaper.png");
     background-size: cover;
 }
 
