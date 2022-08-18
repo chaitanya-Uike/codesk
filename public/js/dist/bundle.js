@@ -27171,7 +27171,7 @@ var cloneDeep = require("lodash.clonedeep");
 sharedb.types.register(richText.type);
 
 // initializing sharedb and getting connection object
-const socket = new ReconnectingWebSocket("wss://" + window.location.host);
+const socket = new ReconnectingWebSocket("ws://" + window.location.host);
 const connection = new sharedb.Connection(socket);
 
 // Quill setup
