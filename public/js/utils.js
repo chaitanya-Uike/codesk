@@ -1,9 +1,9 @@
 function qs(selector, parent = document) {
-    return parent.querySelector(selector)
+  return parent.querySelector(selector);
 }
 
 function qsa(selector, parent = document) {
-    return [...parent.querySelectorAll(selector)]
+  return [...parent.querySelectorAll(selector)];
 }
 
-export { qs, qsa }
+export { qs, qsa };

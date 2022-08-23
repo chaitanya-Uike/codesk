@@ -37,6 +37,10 @@ const fontSizes = ["14px", "16px", "18px", "22px", "28px", "36px"];
 Size.whitelist = fontSizes;
 Quill.register(Size, true);
 
+function insertAfter(newNode, referenceNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
 module.exports = {
   connection,
   Quill,
@@ -44,4 +48,5 @@ module.exports = {
   ObjectID,
   io,
   cloneDeep,
+  insertAfter,
 };

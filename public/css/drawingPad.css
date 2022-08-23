@@ -8,6 +8,24 @@
     --accent-color-light: rgb(182, 217, 247);
 }
 
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.canvas-wrapper .canvas-container {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+}
+
+#canvasTop{
+    position: absolute;
+}
+
 .canvas-container {
     /* dot grid */
     background-color: white;
