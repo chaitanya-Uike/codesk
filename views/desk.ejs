@@ -57,378 +57,486 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <div id="Text-Editor" class="sl-window">
-        <div id="toolbar-wrapper">
-          <div id="toolbar">
-            <span class="ql-formats">
-              <!-- line format -->
-              <select class="ql-header">
-                <option value="1">Heading</option>
-                <option value="2">Subheading</option>
-                <option selected="selected"></option>
-              </select>
-
-              <!-- font selection -->
-              <select class="ql-font">
-                <option selected value="arial">Arial</option>
-                <option value="roboto">Roboto</option>
-                <option value="montserrat">Montserrat</option>
-                <option value="helvetica">Helvetica</option>
-                <option value="poppins">Poppins</option>
-                <option value="merriweather">Merriweather</option>
-                <option value="playfair">Playfair</option>
-              </select>
-
-              <!-- font size -->
-              <select class="ql-size">
-                <option value="14px"></option>
-                <option value="16px"></option>
-                <option value="18px"></option>
-                <option value="22px" selected="selected"></option>
-                <option value="28px"></option>
-                <option value="36px"></option>
-              </select>
-            </span>
-
-            <span class="ql-formats">
-              <!-- bold itlaic and underline buttons -->
-              <button class="ql-bold" type="button">
-                <svg viewBox="0 0 18 18">
-                  <path
-                    class="ql-stroke"
-                    d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"
-                  ></path>
-                  <path
-                    class="ql-stroke"
-                    d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"
-                  ></path>
-                </svg>
-              </button>
-              <button class="ql-italic" type="button">
-                <svg viewBox="0 0 18 18">
-                  <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
-                  <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
-                  <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
-                </svg>
-              </button>
-              <button class="ql-underline" type="button">
-                <svg viewBox="0 0 18 18">
-                  <path
-                    class="ql-stroke"
-                    d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"
-                  ></path>
-                  <rect
-                    class="ql-fill"
-                    height="1"
-                    rx="0.5"
-                    ry="0.5"
-                    width="12"
-                    x="3"
-                    y="15"
-                  ></rect>
-                </svg>
-              </button>
-            </span>
-
-            <span class="ql-formats">
-              <!-- numbered list -->
-              <button class="ql-list ql-active" value="ordered" type="button">
-                <svg viewBox="0 0 18 18">
-                  <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line>
-                  <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line>
-                  <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line>
-                  <line
-                    class="ql-stroke ql-thin"
-                    x1="2.5"
-                    x2="4.5"
-                    y1="5.5"
-                    y2="5.5"
-                  ></line>
-                  <path
-                    class="ql-fill"
-                    d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"
-                  ></path>
-                  <path
-                    class="ql-stroke ql-thin"
-                    d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"
-                  ></path>
-                  <path
-                    class="ql-stroke ql-thin"
-                    d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"
-                  ></path>
-                </svg>
-              </button>
-              <!-- bullet list -->
-              <button class="ql-list" value="bullet" type="button">
-                <svg viewBox="0 0 18 18">
-                  <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line>
-                  <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line>
-                  <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line>
-                  <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line>
-                  <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line>
-                  <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line>
-                </svg>
-              </button>
-
-              <!-- alignment selector -->
-              <select class="ql-align">
-                <option label=" left" selected=""></option>
-                <option label="center" value="center"></option>
-                <option label="right" value="right"></option>
-                <option label="justify" value="justify"></option>
-              </select>
-            </span>
-
-            <span class="ql-formats">
-              <!-- links -->
-              <button class="ql-link" type="button">
-                <svg viewBox="0 0 18 18">
-                  <line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line>
-                  <path
-                    class="ql-even ql-stroke"
-                    d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"
-                  ></path>
-                  <path
-                    class="ql-even ql-stroke"
-                    d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"
-                  ></path>
-                </svg>
-              </button>
-              <!-- images -->
-              <button class="ql-image" type="button">
-                <svg viewBox="0 0 18 18">
-                  <rect
-                    class="ql-stroke"
-                    height="10"
-                    width="12"
-                    x="3"
-                    y="4"
-                  ></rect>
-                  <circle class="ql-fill" cx="6" cy="7" r="1"></circle>
-                  <polyline
-                    class="ql-even ql-fill"
-                    points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"
-                  ></polyline>
-                </svg>
-              </button>
-            </span>
-          </div>
-        </div>
-        <div id="textEditor"></div>
-      </div>
-      <div id="Code-Editor" class="sl-window">
-        <div class="code-editor-toolbar">
-          <div class="mode-selector" title="language mode">
-            <span class="label">JavaScript</span>
-            <svg viewBox="0 0 18 18">
-              <polygon class="stroke" points="7 11 9 13 11 11 7 11"></polygon>
-              <polygon class="stroke" points="7 7 9 5 11 7 7 7"></polygon>
-            </svg>
-            <div class="options">
-              <!-- mode for highlight js and lang for piston -->
-              <div class="option" mode="javascript" lang="javascript">
-                JavaScript
-              </div>
-              <div class="option" mode="typescript" lang="typescript">
-                TypeScript
-              </div>
-              <div class="option" mode="c_cpp" lang="c++">C++</div>
-              <div class="option" mode="java" lang="java">Java</div>
-              <div class="option" mode="python" lang="python">Python</div>
-              <div class="option" mode="csharp" lang="csharp">c#</div>
-            </div>
-          </div>
-          <div class="run-code-btn">RUN</div>
-        </div>
-        <div class="editor-body">
-          <div id="codeEditor"></div>
-        </div>
-        <div class="terminal-container">
-          <div class="terminal-header">
-            <div class="output-btn terminal-btn active-terminal-btn">
-              OUTPUT
-            </div>
-            <div class="input-btn terminal-btn">INPUT</div>
-            <div class="close-terminal-btn">
-              <i class="material-icons">close</i>
-            </div>
-          </div>
-          <div class="output-div terminal-content show-terminal"></div>
-          <textarea
-            class="input-div terminal-content"
-            placeholder="input goes here"
-          ></textarea>
-        </div>
-        <div class="editor-footer">
-          <div id="terminal-spinner" class="lds-spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div class="terminal-open-btn footer-btn">TERMINAL</div>
-          <div class="word-wrap-btn footer-btn">WRAP</div>
-        </div>
-      </div>
-      <div id="WhiteBoard" class="sl-window">
-        <div class="canvas-wrapper">
-          <canvas id="canvas" width="1920" height="1080"></canvas>
-          <div id="canvas-toolbar">
-            <div id="pointer-btn" class="toolbar-btn" title="select">
-              <i class="fa-solid fa-arrow-pointer"></i>
-            </div>
-            <div id="pan-btn" class="toolbar-btn" title="pan">
-              <span class="material-symbols-outlined"> pan_tool </span>
-            </div>
-            <div
-              id="draw-mode"
-              class="toolbar-btn toolbar-btn-selected"
-              title="draw"
-            >
-              <span class="material-symbols-outlined"> edit </span>
-            </div>
-            <div id="shapes-btn" class="toolbar-btn" title="shapes">
-              <span class="material-symbols-outlined"> category </span>
-            </div>
-            <div id="undo" class="toolbar-btn" title="undo">
-              <span class="material-symbols-outlined"> undo </span>
-            </div>
-            <div id="redo" class="toolbar-btn" title="redo">
-              <span class="material-symbols-outlined"> redo </span>
-            </div>
-          </div>
-          <div class="edit-pen-div">
-            <span id="close-pen-options" class="material-symbols-outlined">
-              close
-            </span>
-            <div id="eraser" title="eraser">
-              <i class="fa fa-eraser"></i>
-            </div>
+    <div class="mainContainer">
+      <div class="blurDiv">
+        <p class="Companytitle">CODESK.</p>
+        <div class="namePopup">
+          <p class="welcomeText">WELCOME</p>
+          <div class="form-group">
             <input
-              type="range"
-              min="1"
-              max="50"
-              value="5"
-              class="slider"
-              id="stroke-Range"
+              type="text"
+              name="usernameInput"
+              id="usernameInput"
+              autocomplete="off"
+              required
             />
-            <div class="stroke-colors">
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#FFC114"
-                style="color: #ffc114"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#FBAE17"
-                style="color: #fbae17"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#F36323"
-                style="color: #f36323"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#E3182D"
-                style="color: #e3182d"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#CF1278"
-                style="color: #cf1278"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#7EC400"
-                style="color: #7ec400"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#00B44B"
-                style="color: #00b44b"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#0078D7"
-                style="color: #0078d7"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#5B318D"
-                style="color: #5b318d"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#BD7CAE"
-                style="color: #bd7cae"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot"
-                data-value="#B6B6B6"
-                style="color: #b6b6b6"
-              ></i>
-              <i
-                class="fa-solid fa-circle-dot stroke-color-selected"
-                data-value="#1F1F1F"
-                style="color: #1f1f1f"
-              ></i>
-            </div>
+            <span class="floating-label">Username</span>
           </div>
-          <div class="shape-selection-div">
-            <div id="draw-rect" class="toolbar-btn">
-              <span class="material-symbols-outlined"> rectangle </span>
-            </div>
-            <div id="draw-circle" class="toolbar-btn">
-              <span class="material-symbols-outlined"> circle </span>
-            </div>
-            <div id="draw-triangle" class="toolbar-btn">
-              <span class="material-symbols-outlined"> change_history </span>
-            </div>
-          </div>
-          <div class="zoom-level-display-div">100%</div>
+          <button id="submitBtn" type="submit">Join</button>
         </div>
-        <div id="Video-stream" class="sl-window"></div>
       </div>
-    </div>
+      <div class="mainWindow">
+        <div class="wrapper">
+          <div id="Text-Editor" class="sl-window">
+            <div id="toolbar-wrapper">
+              <div id="toolbar">
+                <span class="ql-formats">
+                  <!-- line format -->
+                  <select class="ql-header">
+                    <option value="1">Heading</option>
+                    <option value="2">Subheading</option>
+                    <option selected="selected"></option>
+                  </select>
 
-    <div class="taskbar">
-      <div class="icon-wrapper" id="Text-Editor-icon">
-        <div class="window-icon textEditorIcon"></div>
-        <div class="status"></div>
+                  <!-- font selection -->
+                  <select class="ql-font">
+                    <option selected value="arial">Arial</option>
+                    <option value="roboto">Roboto</option>
+                    <option value="montserrat">Montserrat</option>
+                    <option value="helvetica">Helvetica</option>
+                    <option value="poppins">Poppins</option>
+                    <option value="merriweather">Merriweather</option>
+                    <option value="playfair">Playfair</option>
+                  </select>
+
+                  <!-- font size -->
+                  <select class="ql-size">
+                    <option value="14px"></option>
+                    <option value="16px"></option>
+                    <option value="18px"></option>
+                    <option value="22px" selected="selected"></option>
+                    <option value="28px"></option>
+                    <option value="36px"></option>
+                  </select>
+                </span>
+
+                <span class="ql-formats">
+                  <!-- bold itlaic and underline buttons -->
+                  <button class="ql-bold" type="button">
+                    <svg viewBox="0 0 18 18">
+                      <path
+                        class="ql-stroke"
+                        d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"
+                      ></path>
+                      <path
+                        class="ql-stroke"
+                        d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="ql-italic" type="button">
+                    <svg viewBox="0 0 18 18">
+                      <line
+                        class="ql-stroke"
+                        x1="7"
+                        x2="13"
+                        y1="4"
+                        y2="4"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="5"
+                        x2="11"
+                        y1="14"
+                        y2="14"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="8"
+                        x2="10"
+                        y1="14"
+                        y2="4"
+                      ></line>
+                    </svg>
+                  </button>
+                  <button class="ql-underline" type="button">
+                    <svg viewBox="0 0 18 18">
+                      <path
+                        class="ql-stroke"
+                        d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"
+                      ></path>
+                      <rect
+                        class="ql-fill"
+                        height="1"
+                        rx="0.5"
+                        ry="0.5"
+                        width="12"
+                        x="3"
+                        y="15"
+                      ></rect>
+                    </svg>
+                  </button>
+                </span>
+
+                <span class="ql-formats">
+                  <!-- numbered list -->
+                  <button
+                    class="ql-list ql-active"
+                    value="ordered"
+                    type="button"
+                  >
+                    <svg viewBox="0 0 18 18">
+                      <line
+                        class="ql-stroke"
+                        x1="7"
+                        x2="15"
+                        y1="4"
+                        y2="4"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="7"
+                        x2="15"
+                        y1="9"
+                        y2="9"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="7"
+                        x2="15"
+                        y1="14"
+                        y2="14"
+                      ></line>
+                      <line
+                        class="ql-stroke ql-thin"
+                        x1="2.5"
+                        x2="4.5"
+                        y1="5.5"
+                        y2="5.5"
+                      ></line>
+                      <path
+                        class="ql-fill"
+                        d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"
+                      ></path>
+                      <path
+                        class="ql-stroke ql-thin"
+                        d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"
+                      ></path>
+                      <path
+                        class="ql-stroke ql-thin"
+                        d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"
+                      ></path>
+                    </svg>
+                  </button>
+                  <!-- bullet list -->
+                  <button class="ql-list" value="bullet" type="button">
+                    <svg viewBox="0 0 18 18">
+                      <line
+                        class="ql-stroke"
+                        x1="6"
+                        x2="15"
+                        y1="4"
+                        y2="4"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="6"
+                        x2="15"
+                        y1="9"
+                        y2="9"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="6"
+                        x2="15"
+                        y1="14"
+                        y2="14"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="3"
+                        x2="3"
+                        y1="4"
+                        y2="4"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="3"
+                        x2="3"
+                        y1="9"
+                        y2="9"
+                      ></line>
+                      <line
+                        class="ql-stroke"
+                        x1="3"
+                        x2="3"
+                        y1="14"
+                        y2="14"
+                      ></line>
+                    </svg>
+                  </button>
+
+                  <!-- alignment selector -->
+                  <select class="ql-align">
+                    <option label=" left" selected=""></option>
+                    <option label="center" value="center"></option>
+                    <option label="right" value="right"></option>
+                    <option label="justify" value="justify"></option>
+                  </select>
+                </span>
+
+                <span class="ql-formats">
+                  <!-- links -->
+                  <button class="ql-link" type="button">
+                    <svg viewBox="0 0 18 18">
+                      <line
+                        class="ql-stroke"
+                        x1="7"
+                        x2="11"
+                        y1="7"
+                        y2="11"
+                      ></line>
+                      <path
+                        class="ql-even ql-stroke"
+                        d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"
+                      ></path>
+                      <path
+                        class="ql-even ql-stroke"
+                        d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <!-- images -->
+                  <button class="ql-image" type="button">
+                    <svg viewBox="0 0 18 18">
+                      <rect
+                        class="ql-stroke"
+                        height="10"
+                        width="12"
+                        x="3"
+                        y="4"
+                      ></rect>
+                      <circle class="ql-fill" cx="6" cy="7" r="1"></circle>
+                      <polyline
+                        class="ql-even ql-fill"
+                        points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"
+                      ></polyline>
+                    </svg>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div id="textEditor"></div>
+          </div>
+          <div id="Code-Editor" class="sl-window">
+            <div class="code-editor-toolbar">
+              <div class="mode-selector" title="language mode">
+                <span class="label">JavaScript</span>
+                <svg viewBox="0 0 18 18">
+                  <polygon
+                    class="stroke"
+                    points="7 11 9 13 11 11 7 11"
+                  ></polygon>
+                  <polygon class="stroke" points="7 7 9 5 11 7 7 7"></polygon>
+                </svg>
+                <div class="options">
+                  <!-- mode for highlight js and lang for piston -->
+                  <div class="option" mode="javascript" lang="javascript">
+                    JavaScript
+                  </div>
+                  <div class="option" mode="typescript" lang="typescript">
+                    TypeScript
+                  </div>
+                  <div class="option" mode="c_cpp" lang="c++">C++</div>
+                  <div class="option" mode="java" lang="java">Java</div>
+                  <div class="option" mode="python" lang="python">Python</div>
+                  <div class="option" mode="csharp" lang="csharp">c#</div>
+                </div>
+              </div>
+              <div class="run-code-btn">RUN</div>
+            </div>
+            <div class="editor-body">
+              <div id="codeEditor"></div>
+            </div>
+            <div class="terminal-container">
+              <div class="terminal-header">
+                <div class="output-btn terminal-btn active-terminal-btn">
+                  OUTPUT
+                </div>
+                <div class="input-btn terminal-btn">INPUT</div>
+                <div class="close-terminal-btn">
+                  <i class="material-icons">close</i>
+                </div>
+              </div>
+              <div class="output-div terminal-content show-terminal"></div>
+              <textarea
+                class="input-div terminal-content"
+                placeholder="input goes here"
+              ></textarea>
+            </div>
+            <div class="editor-footer">
+              <div id="terminal-spinner" class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="terminal-open-btn footer-btn">TERMINAL</div>
+              <div class="word-wrap-btn footer-btn">WRAP</div>
+            </div>
+          </div>
+          <div id="WhiteBoard" class="sl-window">
+            <div class="canvas-wrapper">
+              <canvas id="canvas" width="1920" height="1080"></canvas>
+              <div id="canvas-toolbar">
+                <div id="pointer-btn" class="toolbar-btn" title="select">
+                  <i class="fa-solid fa-arrow-pointer"></i>
+                </div>
+                <div id="pan-btn" class="toolbar-btn" title="pan">
+                  <span class="material-symbols-outlined"> pan_tool </span>
+                </div>
+                <div
+                  id="draw-mode"
+                  class="toolbar-btn toolbar-btn-selected"
+                  title="draw"
+                >
+                  <span class="material-symbols-outlined"> edit </span>
+                </div>
+                <div id="shapes-btn" class="toolbar-btn" title="shapes">
+                  <span class="material-symbols-outlined"> category </span>
+                </div>
+                <div id="undo" class="toolbar-btn" title="undo">
+                  <span class="material-symbols-outlined"> undo </span>
+                </div>
+                <div id="redo" class="toolbar-btn" title="redo">
+                  <span class="material-symbols-outlined"> redo </span>
+                </div>
+              </div>
+              <div class="edit-pen-div">
+                <span id="close-pen-options" class="material-symbols-outlined">
+                  close
+                </span>
+                <div id="eraser" title="eraser">
+                  <i class="fa fa-eraser"></i>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="50"
+                  value="5"
+                  class="slider"
+                  id="stroke-Range"
+                />
+                <div class="stroke-colors">
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#FFC114"
+                    style="color: #ffc114"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#FBAE17"
+                    style="color: #fbae17"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#F36323"
+                    style="color: #f36323"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#E3182D"
+                    style="color: #e3182d"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#CF1278"
+                    style="color: #cf1278"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#7EC400"
+                    style="color: #7ec400"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#00B44B"
+                    style="color: #00b44b"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#0078D7"
+                    style="color: #0078d7"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#5B318D"
+                    style="color: #5b318d"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#BD7CAE"
+                    style="color: #bd7cae"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot"
+                    data-value="#B6B6B6"
+                    style="color: #b6b6b6"
+                  ></i>
+                  <i
+                    class="fa-solid fa-circle-dot stroke-color-selected"
+                    data-value="#1F1F1F"
+                    style="color: #1f1f1f"
+                  ></i>
+                </div>
+              </div>
+              <div class="shape-selection-div">
+                <div id="draw-rect" class="toolbar-btn">
+                  <span class="material-symbols-outlined"> rectangle </span>
+                </div>
+                <div id="draw-circle" class="toolbar-btn">
+                  <span class="material-symbols-outlined"> circle </span>
+                </div>
+                <div id="draw-triangle" class="toolbar-btn">
+                  <span class="material-symbols-outlined">
+                    change_history
+                  </span>
+                </div>
+              </div>
+              <div class="zoom-level-display-div">100%</div>
+            </div>
+            <div id="Video-stream" class="sl-window"></div>
+          </div>
+        </div>
+
+        <div class="taskbar">
+          <div class="icon-wrapper" id="Text-Editor-icon">
+            <div class="window-icon textEditorIcon"></div>
+            <div class="status"></div>
+          </div>
+          <div class="icon-wrapper" id="Code-Editor-icon">
+            <div class="window-icon codeEditorIcon"></div>
+            <div class="status"></div>
+          </div>
+          <div class="icon-wrapper" id="WhiteBoard-icon">
+            <div class="window-icon whiteboardIcon"></div>
+            <div class="status"></div>
+          </div>
+          <div class="icon-wrapper" id="Video-stream-icon">
+            <div class="window-icon videoStreamIcon"></div>
+            <div class="status"></div>
+          </div>
+        </div>
       </div>
-      <div class="icon-wrapper" id="Code-Editor-icon">
-        <div class="window-icon codeEditorIcon"></div>
-        <div class="status"></div>
-      </div>
-      <div class="icon-wrapper" id="WhiteBoard-icon">
-        <div class="window-icon whiteboardIcon"></div>
-        <div class="status"></div>
-      </div>
-      <div class="icon-wrapper" id="Video-stream-icon">
-        <div class="window-icon videoStreamIcon"></div>
-        <div class="status"></div>
-      </div>
-    </div>
-    <div id="main-loader">
-      <div class="container">
-        <div class="cube">
-          <div class="sides">
-            <div class="top"></div>
-            <div class="right"></div>
-            <div class="bottom"></div>
-            <div class="left"></div>
-            <div class="front"></div>
-            <div class="back"></div>
+      <div id="main-loader">
+        <div class="container">
+          <div class="cube">
+            <div class="sides">
+              <div class="top"></div>
+              <div class="right"></div>
+              <div class="bottom"></div>
+              <div class="left"></div>
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
           </div>
         </div>
       </div>

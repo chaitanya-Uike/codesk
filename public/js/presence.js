@@ -6,9 +6,9 @@ class Presence {
     this.colors = {};
   }
 
-  subscribe(collection, editor) {
+  subscribe(editor) {
     const presence = editor.doc.connection.getDocPresence(
-      collection,
+      editor.collection,
       this.roomId
     );
 
@@ -18,7 +18,7 @@ class Presence {
 
     const localPresence = presence.create(this.userId);
 
-    editor.submitPresence(localPresence, this.userName);
+    editor.submitPresence(localPresence);
 
     presence.on("receive", (id, range) => {
       this.colors[id] =
