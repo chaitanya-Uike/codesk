@@ -7,7 +7,7 @@ const userId = new Module.ObjectID().toString();
 const presence = new Presence(userId, "", ROOM_ID);
 
 submitBtn.addEventListener("click", () => {
-  presence.userName = userNameInput.value;
+  presence.userInfo.userName = userNameInput.value;
   blurDiv.style.display = "none";
 });
 
