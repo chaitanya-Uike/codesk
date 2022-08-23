@@ -113,12 +113,11 @@ server.on("upgrade", function (req, socket, head) {
 
 // for adding user info to the op
 backend.use("afterWrite", (context, next) => {
-  if (context.collection !== "drawing-pad") return;
-
-  if (context && context.op && context.op.op)
-    context.op.op.forEach((op) => {
-      op.lastUpdatedBy = context.extra.source;
-    });
+  if (context.collection === "drawing-pad")
+    if (context && context.op && context.op.op)
+      context.op.op.forEach((op) => {
+        op.lastUpdatedBy = context.extra.source;
+      });
   next();
 });
 

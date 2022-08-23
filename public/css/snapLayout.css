@@ -5,20 +5,10 @@
     padding: 0;
 }
 
-body {
-    display: grid;
-    grid-template-columns: auto 1fr;
-
-    background-image: url("../assets/wallpaper.png");
-    background-size: cover;
-}
-
 .wrapper {
     position: relative;
-
-    width: calc(100vw - 70px);
+    width: 100%;
     height: 100vh;
-
     overflow: hidden;
 }
 
@@ -176,8 +166,7 @@ body {
     justify-content: center;
 
 
-    width: 100%;
-    height: 100%;
+    width: 70px;
 
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.562);
 

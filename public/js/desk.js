@@ -1,3 +1,28 @@
+const submitBtn = document.getElementById("submitBtn");
+const userNameInput = document.querySelector("#usernameInput");
+const blurDiv = document.querySelector(".blurDiv");
+
+const socket = Module.io();
+const userId = new Module.ObjectID().toString();
+const presence = new Presence(userId, "", ROOM_ID);
+
+submitBtn.addEventListener("click", () => {
+  presence.userName = userNameInput.value;
+  blurDiv.style.display = "none";
+});
+
+// submit btn animation handler
+
+submitBtn.addEventListener("mouseenter", (e) => {
+  e.target.classList.remove("submit-mouse-out");
+  e.target.classList.add("submit-mouse-in");
+});
+
+submitBtn.addEventListener("mouseleave", (e) => {
+  e.target.classList.remove("submit-mouse-in");
+  e.target.classList.add("submit-mouse-out");
+});
+
 const wait = (delay = 0) => {
   return new Promise((resolve) => setTimeout(resolve, delay));
 };
@@ -8,23 +33,27 @@ window.addEventListener("load", () => {
   });
 });
 
-const socket = Module.io();
-const userId = new Module.ObjectID().toString();
-const userName = "";
-
 const TEXT_EDITOR_COLLECTION = "text-editor";
 const CODE_EDITOR_COLLECTION = "code-editor";
 const DRAWING_PAD_COLLECTION = "drawing-pad";
-
-const presence = new Presence(userId, userName, ROOM_ID);
 
 // connect all the editors to shareDB docs
 const textDoc = Module.connection.get(TEXT_EDITOR_COLLECTION, ROOM_ID);
 const codeDoc = Module.connection.get(CODE_EDITOR_COLLECTION, ROOM_ID);
 const drawingDoc = Module.connection.get(DRAWING_PAD_COLLECTION, ROOM_ID);
 
-const textEditor = new TextEditor("#textEditor", textDoc);
-const codeEditor = new CodeEditor("codeEditor", codeDoc);
+const textEditor = new TextEditor(
+  "#textEditor",
+  textDoc,
+  presence,
+  TEXT_EDITOR_COLLECTION
+);
+const codeEditor = new CodeEditor(
+  "codeEditor",
+  codeDoc,
+  presence,
+  CODE_EDITOR_COLLECTION
+);
 const drawingPad = new DrawingPad("canvas", drawingDoc, presence);
 
 // initialize snapLayout
@@ -33,9 +62,7 @@ const snapLayout = new SnapLayout(".wrapper");
 // initialize components
 const textEditorOptions = {
   onCreation: () => {
-    textEditor.initializeTextEditor(() => {
-      presence.subscribe(TEXT_EDITOR_COLLECTION, textEditor);
-    });
+    textEditor.initializeTextEditor();
   },
   onClose: () => {
     socket.emit("leave-text-editor", userId);
@@ -44,9 +71,7 @@ const textEditorOptions = {
 
 const codeEditorOptions = {
   onCreation: () => {
-    codeEditor.initializeCodeEditor(() => {
-      presence.subscribe(CODE_EDITOR_COLLECTION, codeEditor);
-    });
+    codeEditor.initializeCodeEditor();
   },
   onResize: () => {
     codeEditor.resizeAceEditor();

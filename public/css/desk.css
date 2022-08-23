@@ -1,12 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.mainContainer{
+    position: relative;
+}
+
+.mainWindow{
+    display: flex;
+
+    background-image: url("../assets/wallpaper.png");
+    background-size: cover;
+}
+
+.blurDiv{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 19;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.473);
+
+    background-color: #3c3c3c4f;
+    backdrop-filter: blur(5px);
+}
+
+.Companytitle{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+    background-color: #1B1B1B;
+    padding: 10px 20px;
+    border-radius: 5px 20px;
+}
+
+.namePopup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #1B1B1B;
+    border-radius: 8px;
+    padding: 30px 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.welcomeText{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-group input {
+    width: 300px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    outline: none;
+    background-color: #242424;
+    padding: 7px 14px;
+    font-size: 17px;
+    color: white;
+}
+
+input:focus~.floating-label,
+input:not(:focus):valid~.floating-label {
+    top: -8px;
+    left: 16px;
+    font-size: 11px;
+}
+
+.form-group {
+    margin-top: 30px;
+    position: relative;
+}
+
+.floating-label {
+    position: absolute;
+    pointer-events: none;
+    left: 16px;
+    top: 7px;
+    font-size: 15px;
+    background-color: #242424;
+    padding: 0 3px;
+    color: gray;
+    transition: 0.2s ease all;
+}
+
+/* background color changes after autofill to fix that use this */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--primary-black) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+#submitBtn {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    color: white;
+}
+
+.submit-mouse-in {
+    animation: gradientIn 1.5s ease-in-out forwards;
+}
+
+.submit-mouse-out {
+    animation: gradientOut 1.5s ease-in-out forwards;
+}
+
+@keyframes gradientIn {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes gradientOut {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.wrapper{
+    position: absolute;
+    top: 0;
+}
+
+
 #main-loader {
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1B1B1B;
-    z-index: 10;
+    z-index: 40;
 }
 
 :root {
