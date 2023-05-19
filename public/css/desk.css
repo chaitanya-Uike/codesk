@@ -1,95 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.mainContainer{
-    position: relative;
+.mainContainer {
+  position: relative;
 }
 
-.mainWindow{
-    display: flex;
+.mainWindow {
+  display: flex;
 
-    background-image: url("../assets/wallpaper.png");
-    background-size: cover;
+  background-image: url("../assets/wallpaper.png");
+  background-size: cover;
 }
 
-.blurDiv{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 19;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.473);
+.blurDiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 19;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.473);
 
-    background-color: #3c3c3c4f;
-    backdrop-filter: blur(5px);
+  background-color: #3c3c3c4f;
+  backdrop-filter: blur(5px);
 }
 
-.Companytitle{
-    font-family: 'Poppins', sans-serif;
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    font-size: 45px;
-    font-weight: bold;
-    color: white;
-    background-color: #1B1B1B;
-    padding: 10px 20px;
-    border-radius: 5px 20px;
+.Companytitle {
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  background-color: #1b1b1b;
+  padding: 10px 20px;
+  border-radius: 5px 20px;
 }
 
-.namePopup{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #1B1B1B;
-    border-radius: 8px;
-    padding: 30px 50px;
-    font-family: 'Poppins', sans-serif;
+.namePopup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1b1b1b;
+  border-radius: 8px;
+  padding: 30px 50px;
+  font-family: "Poppins", sans-serif;
 }
 
-.welcomeText{
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
+.welcomeText {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
 }
 
 .form-group input {
-    width: 300px;
-    border: 2px solid gray;
-    border-radius: 10px;
-    outline: none;
-    background-color: #242424;
-    padding: 7px 14px;
-    font-size: 17px;
-    color: white;
+  width: 300px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  outline: none;
+  background-color: #242424;
+  padding: 7px 14px;
+  font-size: 17px;
+  color: white;
 }
 
-input:focus~.floating-label,
-input:not(:focus):valid~.floating-label {
-    top: -8px;
-    left: 16px;
-    font-size: 11px;
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+  top: -8px;
+  left: 16px;
+  font-size: 11px;
 }
 
 .form-group {
-    margin-top: 30px;
-    position: relative;
+  margin-top: 30px;
+  position: relative;
 }
 
 .floating-label {
-    position: absolute;
-    pointer-events: none;
-    left: 16px;
-    top: 7px;
-    font-size: 15px;
-    background-color: #242424;
-    padding: 0 3px;
-    color: gray;
-    transition: 0.2s ease all;
+  position: absolute;
+  pointer-events: none;
+  left: 16px;
+  top: 7px;
+  font-size: 15px;
+  background-color: #242424;
+  padding: 0 3px;
+  color: gray;
+  transition: 0.2s ease all;
 }
 
 /* background color changes after autofill to fix that use this */
@@ -97,726 +97,723 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--primary-black) inset !important;
-    -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0 30px var(--primary-black) inset !important;
+  -webkit-text-fill-color: white !important;
 }
 
 #submitBtn {
-    width: 100%;
-    padding: 12px 0;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 30px;
-    cursor: pointer;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    color: white;
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 30px;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  color: white;
 }
 
 .submit-mouse-in {
-    animation: gradientIn 1.5s ease-in-out forwards;
+  animation: gradientIn 1.5s ease-in-out forwards;
 }
 
 .submit-mouse-out {
-    animation: gradientOut 1.5s ease-in-out forwards;
+  animation: gradientOut 1.5s ease-in-out forwards;
 }
 
 @keyframes gradientIn {
-    0% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
 
-    100% {
-        background-position: 100% 50%;
-    }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes gradientOut {
-    0% {
-        background-position: 100% 50%;
-    }
+  0% {
+    background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-
-
-.wrapper{
-    position: absolute;
-    top: 0;
+.wrapper {
+  position: absolute;
+  top: 0;
 }
-
 
 #main-loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1B1B1B;
-    z-index: 40;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b1b1b;
+  z-index: 40;
 }
 
 :root {
-    --size: 20vmin;
-    --border-width-fraction: 50;
-    --border-radius-fraction: 12;
-    --timing: ease;
-    --duration: 3s;
-    --delay: 100ms;
-    --f: rotateY(0deg);
-    --b: rotateY(-180deg);
-    --l: rotateY(-90deg);
-    --bt: rotateX(-90deg);
-    --r: rotateY(90deg);
-    --t: rotateX(90deg);
-    --z1: translateZ(var(--size));
-    --z2: translateZ(calc(var(--size) / 2));
-    --z0: translateZ(calc(1.041 * var(--size)));
+  --size: 20vmin;
+  --border-width-fraction: 50;
+  --border-radius-fraction: 12;
+  --timing: ease;
+  --duration: 3s;
+  --delay: 100ms;
+  --f: rotateY(0deg);
+  --b: rotateY(-180deg);
+  --l: rotateY(-90deg);
+  --bt: rotateX(-90deg);
+  --r: rotateY(90deg);
+  --t: rotateX(90deg);
+  --z1: translateZ(var(--size));
+  --z2: translateZ(calc(var(--size) / 2));
+  --z0: translateZ(calc(1.041 * var(--size)));
 }
 
 #main-loader .container {
-    transform: scale(0.4);
-    position: relative;
+  transform: scale(0.4);
+  position: relative;
 }
 
 #main-loader .container .cube {
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #main-loader .container .cube,
 #main-loader .container .cube * {
-    width: var(--size);
-    height: var(--size);
-    position: absolute;
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
 }
 
 #main-loader .container .cube .sides {
-    animation: rotate var(--duration) 0.8s var(--timing) infinite;
-    transform-style: preserve-3d;
-    transform: rotateX(-37.5deg) rotateY(45deg);
+  animation: rotate var(--duration) 0.8s var(--timing) infinite;
+  transform-style: preserve-3d;
+  transform: rotateX(-37.5deg) rotateY(45deg);
 }
 
 #main-loader .container .cube .sides * {
-    border: calc(var(--size) / var(--border-width-fraction)) solid;
-    border-color: #fff;
-    border-radius: calc(var(--size) / var(--border-radius-fraction));
-    background: rgba(255, 255, 255, 0.1);
-    transform-origin: 50% 50%;
-    animation-fill-mode: forwards;
+  border: calc(var(--size) / var(--border-width-fraction)) solid;
+  border-color: #fff;
+  border-radius: calc(var(--size) / var(--border-radius-fraction));
+  background: rgba(255, 255, 255, 0.1);
+  transform-origin: 50% 50%;
+  animation-fill-mode: forwards;
 }
 
 #main-loader .container .cube .sides .right {
-    animation: right var(--duration) var(--delay) var(--timing) infinite;
+  animation: right var(--duration) var(--delay) var(--timing) infinite;
 }
 
 #main-loader .container .cube .sides .bottom {
-    animation: bottom var(--duration) 0ms var(--timing) infinite;
+  animation: bottom var(--duration) 0ms var(--timing) infinite;
 }
 
 #main-loader .container .cube .sides .left {
-    animation: left var(--duration) var(--delay) var(--timing) infinite;
+  animation: left var(--duration) var(--delay) var(--timing) infinite;
 }
 
 #main-loader .container .cube .sides .front {
-    animation: front var(--duration) var(--delay) var(--timing) infinite;
+  animation: front var(--duration) var(--delay) var(--timing) infinite;
 }
 
 #main-loader .container .cube .sides .back {
-    animation: back var(--duration) var(--delay) var(--timing) infinite;
+  animation: back var(--duration) var(--delay) var(--timing) infinite;
 }
 
 #main-loader .container .cube .sides .top {
-    animation: top var(--duration) 0ms var(--timing) infinite;
+  animation: top var(--duration) 0ms var(--timing) infinite;
 }
 
 @-moz-keyframes back {
-    0% {
-        transform: var(--b) var(--z1);
-    }
+  0% {
+    transform: var(--b) var(--z1);
+  }
 
-    20% {
-        transform: var(--b) var(--z2);
-    }
+  20% {
+    transform: var(--b) var(--z2);
+  }
 
-    70% {
-        transform: var(--b) var(--z2);
-    }
+  70% {
+    transform: var(--b) var(--z2);
+  }
 
-    90% {
-        transform: var(--b) var(--z1);
-    }
+  90% {
+    transform: var(--b) var(--z1);
+  }
 
-    100% {
-        transform: var(--b) var(--z1);
-    }
+  100% {
+    transform: var(--b) var(--z1);
+  }
 }
 
 @-webkit-keyframes back {
-    0% {
-        transform: var(--b) var(--z1);
-    }
+  0% {
+    transform: var(--b) var(--z1);
+  }
 
-    20% {
-        transform: var(--b) var(--z2);
-    }
+  20% {
+    transform: var(--b) var(--z2);
+  }
 
-    70% {
-        transform: var(--b) var(--z2);
-    }
+  70% {
+    transform: var(--b) var(--z2);
+  }
 
-    90% {
-        transform: var(--b) var(--z1);
-    }
+  90% {
+    transform: var(--b) var(--z1);
+  }
 
-    100% {
-        transform: var(--b) var(--z1);
-    }
+  100% {
+    transform: var(--b) var(--z1);
+  }
 }
 
 @-o-keyframes back {
-    0% {
-        transform: var(--b) var(--z1);
-    }
+  0% {
+    transform: var(--b) var(--z1);
+  }
 
-    20% {
-        transform: var(--b) var(--z2);
-    }
+  20% {
+    transform: var(--b) var(--z2);
+  }
 
-    70% {
-        transform: var(--b) var(--z2);
-    }
+  70% {
+    transform: var(--b) var(--z2);
+  }
 
-    90% {
-        transform: var(--b) var(--z1);
-    }
+  90% {
+    transform: var(--b) var(--z1);
+  }
 
-    100% {
-        transform: var(--b) var(--z1);
-    }
+  100% {
+    transform: var(--b) var(--z1);
+  }
 }
 
 @keyframes back {
-    0% {
-        transform: var(--b) var(--z1);
-    }
+  0% {
+    transform: var(--b) var(--z1);
+  }
 
-    20% {
-        transform: var(--b) var(--z2);
-    }
+  20% {
+    transform: var(--b) var(--z2);
+  }
 
-    70% {
-        transform: var(--b) var(--z2);
-    }
+  70% {
+    transform: var(--b) var(--z2);
+  }
 
-    90% {
-        transform: var(--b) var(--z1);
-    }
+  90% {
+    transform: var(--b) var(--z1);
+  }
 
-    100% {
-        transform: var(--b) var(--z1);
-    }
+  100% {
+    transform: var(--b) var(--z1);
+  }
 }
 
 @-moz-keyframes front {
-    0% {
-        transform: var(--f) var(--z1);
-    }
+  0% {
+    transform: var(--f) var(--z1);
+  }
 
-    20% {
-        transform: var(--f) var(--z2);
-    }
+  20% {
+    transform: var(--f) var(--z2);
+  }
 
-    70% {
-        transform: var(--f) var(--z2);
-    }
+  70% {
+    transform: var(--f) var(--z2);
+  }
 
-    90% {
-        transform: var(--f) var(--z1);
-    }
+  90% {
+    transform: var(--f) var(--z1);
+  }
 
-    100% {
-        transform: var(--f) var(--z1);
-    }
+  100% {
+    transform: var(--f) var(--z1);
+  }
 }
 
 @-webkit-keyframes front {
-    0% {
-        transform: var(--f) var(--z1);
-    }
+  0% {
+    transform: var(--f) var(--z1);
+  }
 
-    20% {
-        transform: var(--f) var(--z2);
-    }
+  20% {
+    transform: var(--f) var(--z2);
+  }
 
-    70% {
-        transform: var(--f) var(--z2);
-    }
+  70% {
+    transform: var(--f) var(--z2);
+  }
 
-    90% {
-        transform: var(--f) var(--z1);
-    }
+  90% {
+    transform: var(--f) var(--z1);
+  }
 
-    100% {
-        transform: var(--f) var(--z1);
-    }
+  100% {
+    transform: var(--f) var(--z1);
+  }
 }
 
 @-o-keyframes front {
-    0% {
-        transform: var(--f) var(--z1);
-    }
+  0% {
+    transform: var(--f) var(--z1);
+  }
 
-    20% {
-        transform: var(--f) var(--z2);
-    }
+  20% {
+    transform: var(--f) var(--z2);
+  }
 
-    70% {
-        transform: var(--f) var(--z2);
-    }
+  70% {
+    transform: var(--f) var(--z2);
+  }
 
-    90% {
-        transform: var(--f) var(--z1);
-    }
+  90% {
+    transform: var(--f) var(--z1);
+  }
 
-    100% {
-        transform: var(--f) var(--z1);
-    }
+  100% {
+    transform: var(--f) var(--z1);
+  }
 }
 
 @keyframes front {
-    0% {
-        transform: var(--f) var(--z1);
-    }
+  0% {
+    transform: var(--f) var(--z1);
+  }
 
-    20% {
-        transform: var(--f) var(--z2);
-    }
+  20% {
+    transform: var(--f) var(--z2);
+  }
 
-    70% {
-        transform: var(--f) var(--z2);
-    }
+  70% {
+    transform: var(--f) var(--z2);
+  }
 
-    90% {
-        transform: var(--f) var(--z1);
-    }
+  90% {
+    transform: var(--f) var(--z1);
+  }
 
-    100% {
-        transform: var(--f) var(--z1);
-    }
+  100% {
+    transform: var(--f) var(--z1);
+  }
 }
 
 @-moz-keyframes left {
-    0% {
-        transform: var(--l) var(--z1);
-    }
+  0% {
+    transform: var(--l) var(--z1);
+  }
 
-    20% {
-        transform: var(--l) var(--z2);
-    }
+  20% {
+    transform: var(--l) var(--z2);
+  }
 
-    70% {
-        transform: var(--l) var(--z2);
-    }
+  70% {
+    transform: var(--l) var(--z2);
+  }
 
-    90% {
-        transform: var(--l) var(--z1);
-    }
+  90% {
+    transform: var(--l) var(--z1);
+  }
 
-    100% {
-        transform: var(--l) var(--z1);
-    }
+  100% {
+    transform: var(--l) var(--z1);
+  }
 }
 
 @-webkit-keyframes left {
-    0% {
-        transform: var(--l) var(--z1);
-    }
+  0% {
+    transform: var(--l) var(--z1);
+  }
 
-    20% {
-        transform: var(--l) var(--z2);
-    }
+  20% {
+    transform: var(--l) var(--z2);
+  }
 
-    70% {
-        transform: var(--l) var(--z2);
-    }
+  70% {
+    transform: var(--l) var(--z2);
+  }
 
-    90% {
-        transform: var(--l) var(--z1);
-    }
+  90% {
+    transform: var(--l) var(--z1);
+  }
 
-    100% {
-        transform: var(--l) var(--z1);
-    }
+  100% {
+    transform: var(--l) var(--z1);
+  }
 }
 
 @-o-keyframes left {
-    0% {
-        transform: var(--l) var(--z1);
-    }
+  0% {
+    transform: var(--l) var(--z1);
+  }
 
-    20% {
-        transform: var(--l) var(--z2);
-    }
+  20% {
+    transform: var(--l) var(--z2);
+  }
 
-    70% {
-        transform: var(--l) var(--z2);
-    }
+  70% {
+    transform: var(--l) var(--z2);
+  }
 
-    90% {
-        transform: var(--l) var(--z1);
-    }
+  90% {
+    transform: var(--l) var(--z1);
+  }
 
-    100% {
-        transform: var(--l) var(--z1);
-    }
+  100% {
+    transform: var(--l) var(--z1);
+  }
 }
 
 @keyframes left {
-    0% {
-        transform: var(--l) var(--z1);
-    }
+  0% {
+    transform: var(--l) var(--z1);
+  }
 
-    20% {
-        transform: var(--l) var(--z2);
-    }
+  20% {
+    transform: var(--l) var(--z2);
+  }
 
-    70% {
-        transform: var(--l) var(--z2);
-    }
+  70% {
+    transform: var(--l) var(--z2);
+  }
 
-    90% {
-        transform: var(--l) var(--z1);
-    }
+  90% {
+    transform: var(--l) var(--z1);
+  }
 
-    100% {
-        transform: var(--l) var(--z1);
-    }
+  100% {
+    transform: var(--l) var(--z1);
+  }
 }
 
 @-moz-keyframes bottom {
-    0% {
-        transform: var(--bt) var(--z0);
-    }
+  0% {
+    transform: var(--bt) var(--z0);
+  }
 
-    20% {
-        transform: var(--bt) var(--z2);
-    }
+  20% {
+    transform: var(--bt) var(--z2);
+  }
 
-    70% {
-        transform: var(--bt) var(--z2);
-    }
+  70% {
+    transform: var(--bt) var(--z2);
+  }
 
-    90% {
-        transform: var(--bt) var(--z0);
-    }
+  90% {
+    transform: var(--bt) var(--z0);
+  }
 
-    100% {
-        transform: var(--bt) var(--z0);
-    }
+  100% {
+    transform: var(--bt) var(--z0);
+  }
 }
 
 @-webkit-keyframes bottom {
-    0% {
-        transform: var(--bt) var(--z0);
-    }
+  0% {
+    transform: var(--bt) var(--z0);
+  }
 
-    20% {
-        transform: var(--bt) var(--z2);
-    }
+  20% {
+    transform: var(--bt) var(--z2);
+  }
 
-    70% {
-        transform: var(--bt) var(--z2);
-    }
+  70% {
+    transform: var(--bt) var(--z2);
+  }
 
-    90% {
-        transform: var(--bt) var(--z0);
-    }
+  90% {
+    transform: var(--bt) var(--z0);
+  }
 
-    100% {
-        transform: var(--bt) var(--z0);
-    }
+  100% {
+    transform: var(--bt) var(--z0);
+  }
 }
 
 @-o-keyframes bottom {
-    0% {
-        transform: var(--bt) var(--z0);
-    }
+  0% {
+    transform: var(--bt) var(--z0);
+  }
 
-    20% {
-        transform: var(--bt) var(--z2);
-    }
+  20% {
+    transform: var(--bt) var(--z2);
+  }
 
-    70% {
-        transform: var(--bt) var(--z2);
-    }
+  70% {
+    transform: var(--bt) var(--z2);
+  }
 
-    90% {
-        transform: var(--bt) var(--z0);
-    }
+  90% {
+    transform: var(--bt) var(--z0);
+  }
 
-    100% {
-        transform: var(--bt) var(--z0);
-    }
+  100% {
+    transform: var(--bt) var(--z0);
+  }
 }
 
 @keyframes bottom {
-    0% {
-        transform: var(--bt) var(--z0);
-    }
+  0% {
+    transform: var(--bt) var(--z0);
+  }
 
-    20% {
-        transform: var(--bt) var(--z2);
-    }
+  20% {
+    transform: var(--bt) var(--z2);
+  }
 
-    70% {
-        transform: var(--bt) var(--z2);
-    }
+  70% {
+    transform: var(--bt) var(--z2);
+  }
 
-    90% {
-        transform: var(--bt) var(--z0);
-    }
+  90% {
+    transform: var(--bt) var(--z0);
+  }
 
-    100% {
-        transform: var(--bt) var(--z0);
-    }
+  100% {
+    transform: var(--bt) var(--z0);
+  }
 }
 
 @-moz-keyframes right {
-    0% {
-        transform: var(--r) var(--z1);
-    }
+  0% {
+    transform: var(--r) var(--z1);
+  }
 
-    20% {
-        transform: var(--r) var(--z2);
-    }
+  20% {
+    transform: var(--r) var(--z2);
+  }
 
-    70% {
-        transform: var(--r) var(--z2);
-    }
+  70% {
+    transform: var(--r) var(--z2);
+  }
 
-    90% {
-        transform: var(--r) var(--z1);
-    }
+  90% {
+    transform: var(--r) var(--z1);
+  }
 
-    100% {
-        transform: var(--r) var(--z1);
-    }
+  100% {
+    transform: var(--r) var(--z1);
+  }
 }
 
 @-webkit-keyframes right {
-    0% {
-        transform: var(--r) var(--z1);
-    }
+  0% {
+    transform: var(--r) var(--z1);
+  }
 
-    20% {
-        transform: var(--r) var(--z2);
-    }
+  20% {
+    transform: var(--r) var(--z2);
+  }
 
-    70% {
-        transform: var(--r) var(--z2);
-    }
+  70% {
+    transform: var(--r) var(--z2);
+  }
 
-    90% {
-        transform: var(--r) var(--z1);
-    }
+  90% {
+    transform: var(--r) var(--z1);
+  }
 
-    100% {
-        transform: var(--r) var(--z1);
-    }
+  100% {
+    transform: var(--r) var(--z1);
+  }
 }
 
 @-o-keyframes right {
-    0% {
-        transform: var(--r) var(--z1);
-    }
+  0% {
+    transform: var(--r) var(--z1);
+  }
 
-    20% {
-        transform: var(--r) var(--z2);
-    }
+  20% {
+    transform: var(--r) var(--z2);
+  }
 
-    70% {
-        transform: var(--r) var(--z2);
-    }
+  70% {
+    transform: var(--r) var(--z2);
+  }
 
-    90% {
-        transform: var(--r) var(--z1);
-    }
+  90% {
+    transform: var(--r) var(--z1);
+  }
 
-    100% {
-        transform: var(--r) var(--z1);
-    }
+  100% {
+    transform: var(--r) var(--z1);
+  }
 }
 
 @keyframes right {
-    0% {
-        transform: var(--r) var(--z1);
-    }
+  0% {
+    transform: var(--r) var(--z1);
+  }
 
-    20% {
-        transform: var(--r) var(--z2);
-    }
+  20% {
+    transform: var(--r) var(--z2);
+  }
 
-    70% {
-        transform: var(--r) var(--z2);
-    }
+  70% {
+    transform: var(--r) var(--z2);
+  }
 
-    90% {
-        transform: var(--r) var(--z1);
-    }
+  90% {
+    transform: var(--r) var(--z1);
+  }
 
-    100% {
-        transform: var(--r) var(--z1);
-    }
+  100% {
+    transform: var(--r) var(--z1);
+  }
 }
 
 @-moz-keyframes top {
-    0% {
-        transform: var(--t) var(--z0);
-    }
+  0% {
+    transform: var(--t) var(--z0);
+  }
 
-    20% {
-        transform: var(--t) var(--z2);
-    }
+  20% {
+    transform: var(--t) var(--z2);
+  }
 
-    70% {
-        transform: var(--t) var(--z2);
-    }
+  70% {
+    transform: var(--t) var(--z2);
+  }
 
-    90% {
-        transform: var(--t) var(--z0);
-    }
+  90% {
+    transform: var(--t) var(--z0);
+  }
 
-    100% {
-        transform: var(--t) var(--z0);
-    }
+  100% {
+    transform: var(--t) var(--z0);
+  }
 }
 
 @-webkit-keyframes top {
-    0% {
-        transform: var(--t) var(--z0);
-    }
+  0% {
+    transform: var(--t) var(--z0);
+  }
 
-    20% {
-        transform: var(--t) var(--z2);
-    }
+  20% {
+    transform: var(--t) var(--z2);
+  }
 
-    70% {
-        transform: var(--t) var(--z2);
-    }
+  70% {
+    transform: var(--t) var(--z2);
+  }
 
-    90% {
-        transform: var(--t) var(--z0);
-    }
+  90% {
+    transform: var(--t) var(--z0);
+  }
 
-    100% {
-        transform: var(--t) var(--z0);
-    }
+  100% {
+    transform: var(--t) var(--z0);
+  }
 }
 
 @-o-keyframes top {
-    0% {
-        transform: var(--t) var(--z0);
-    }
+  0% {
+    transform: var(--t) var(--z0);
+  }
 
-    20% {
-        transform: var(--t) var(--z2);
-    }
+  20% {
+    transform: var(--t) var(--z2);
+  }
 
-    70% {
-        transform: var(--t) var(--z2);
-    }
+  70% {
+    transform: var(--t) var(--z2);
+  }
 
-    90% {
-        transform: var(--t) var(--z0);
-    }
+  90% {
+    transform: var(--t) var(--z0);
+  }
 
-    100% {
-        transform: var(--t) var(--z0);
-    }
+  100% {
+    transform: var(--t) var(--z0);
+  }
 }
 
 @keyframes top {
-    0% {
-        transform: var(--t) var(--z0);
-    }
+  0% {
+    transform: var(--t) var(--z0);
+  }
 
-    20% {
-        transform: var(--t) var(--z2);
-    }
+  20% {
+    transform: var(--t) var(--z2);
+  }
 
-    70% {
-        transform: var(--t) var(--z2);
-    }
+  70% {
+    transform: var(--t) var(--z2);
+  }
 
-    90% {
-        transform: var(--t) var(--z0);
-    }
+  90% {
+    transform: var(--t) var(--z0);
+  }
 
-    100% {
-        transform: var(--t) var(--z0);
-    }
+  100% {
+    transform: var(--t) var(--z0);
+  }
 }
 
 @-moz-keyframes rotate {
-    0% {
-        transform: rotateX(-37.5deg) rotateY(45deg);
-    }
+  0% {
+    transform: rotateX(-37.5deg) rotateY(45deg);
+  }
 
-    50% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  50% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 
-    100% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  100% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 }
 
 @-webkit-keyframes rotate {
-    0% {
-        transform: rotateX(-37.5deg) rotateY(45deg);
-    }
+  0% {
+    transform: rotateX(-37.5deg) rotateY(45deg);
+  }
 
-    50% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  50% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 
-    100% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  100% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 }
 
 @-o-keyframes rotate {
-    0% {
-        transform: rotateX(-37.5deg) rotateY(45deg);
-    }
+  0% {
+    transform: rotateX(-37.5deg) rotateY(45deg);
+  }
 
-    50% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  50% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 
-    100% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  100% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 }
 
 @keyframes rotate {
-    0% {
-        transform: rotateX(-37.5deg) rotateY(45deg);
-    }
+  0% {
+    transform: rotateX(-37.5deg) rotateY(45deg);
+  }
 
-    50% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  50% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 
-    100% {
-        transform: rotateX(-37.5deg) rotateY(405deg);
-    }
+  100% {
+    transform: rotateX(-37.5deg) rotateY(405deg);
+  }
 }

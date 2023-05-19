@@ -1,260 +1,254 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .draggable-div {
-    position: absolute;
-    background-color: #1D1E24 !important;
-    border-radius: 5px;
-    box-sizing: border-box;
-    border: 1px solid lightgray;
-    overflow: hidden;
+  position: absolute;
+  background-color: #1d1e24 !important;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  overflow: hidden;
 }
 
 .resizable {
-    resize: both;
-    overflow: hidden;
+  resize: both;
+  overflow: hidden;
 }
 
 .header {
-    width: 100%;
-    height: 50px;
-    background-color: #4b4949;
+  width: 100%;
+  height: 50px;
+  background-color: #4b4949;
 
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 
+  /* make the text in header unselectable */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 
-    /* make the text in header unselectable */
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-
-    /* to prevent the cursor from changing to caret when hovering over text */
-    cursor: grab;
+  /* to prevent the cursor from changing to caret when hovering over text */
+  cursor: grab;
 }
 
 .body {
-    position: relative;
-    height: calc(100% - 50px);
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+  position: relative;
+  height: calc(100% - 50px);
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .active {
-    background-color: #2b2a2a;
+  background-color: #2b2a2a;
 }
 
 .animation {
-    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
 }
 
-
 .size-control {
-    display: flex;
-    column-gap: 5px;
-    margin-right: 10px;
+  display: flex;
+  column-gap: 5px;
+  margin-right: 10px;
 }
 
 .title {
-    color: white;
-    margin-left: 10px;
-    font-size: 20px;
-    font-weight: bold;
+  color: white;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .min {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #FFEB3B;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffeb3b;
+  cursor: pointer;
 }
 
 .min:hover {
-    background-color: #FBC02D;
+  background-color: #fbc02d;
 }
 
 .max {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #4CAF50;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  cursor: pointer;
 }
 
 .max:hover {
-    background-color: rgb(56, 241, 56);
+  background-color: rgb(56, 241, 56);
 }
 
 .close {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #F44336;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f44336;
+  cursor: pointer;
 }
 
 .close:hover {
-    background-color: #FF5252;
+  background-color: #ff5252;
 }
 
 .resizer {
-    display: none;
-    position: absolute;
-    z-index: 5;
-    border-radius: 5px;
+  display: none;
+  position: absolute;
+  z-index: 5;
+  border-radius: 5px;
 }
 
 .resizer:hover {
-    background-color: #f5f5f557;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-    backdrop-filter: blur(5px);
+  background-color: #f5f5f557;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
 }
 
 .sl-window {
-    display: none;
+  display: none;
+  position: relative;
 }
-
-
 
 /* snap previews */
 .snapPreview {
-    position: absolute;
+  position: absolute;
 
-    height: 0;
-    width: 0;
+  height: 0;
+  width: 0;
 
-    border-radius: 5px;
+  border-radius: 5px;
 
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 
-    background-color: rgba(56, 56, 56, 0.623);
-    backdrop-filter: blur(5px);
+  background-color: rgba(56, 56, 56, 0.623);
+  backdrop-filter: blur(5px);
 
-    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
 }
 
-
 .taskbar {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    row-gap: 15px;
+  row-gap: 15px;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
+  width: 70px;
 
-    width: 70px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.562);
 
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.562);
-
-    background-color: #f9c3fe7d;
-    backdrop-filter: blur(5px);
+  background-color: #f9c3fe7d;
+  backdrop-filter: blur(5px);
 }
 
 .window-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
 
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
 }
 
 .window-icon:hover {
-    width: 45px;
+  width: 45px;
 }
 
 .icon-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3px;
 }
 
 .status {
-    display: none;
-    width: 8px;
-    height: 5px;
-    border-radius: 5px;
-    background-color: lightgray;
+  display: none;
+  width: 8px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: lightgray;
 
-    transition: width 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out;
 }
 
 .open {
-    display: block;
+  display: block;
 }
 
 .active-icon {
-    width: 20px;
-    background-color: #00ff00;
+  width: 20px;
+  background-color: #00ff00;
 }
 
 .textEditorIcon {
-    background-image: url("../icons/txt.png");
-    background-size: cover;
-    background-position: center;
+  background-image: url("../icons/txt.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .codeEditorIcon {
-    background-image: url("../icons/code.png");
-    background-size: cover;
-    background-position: center;
+  background-image: url("../icons/code.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .whiteboardIcon {
-    background-image: url("../icons/whiteboard.png");
-    background-size: cover;
-    background-position: center;
+  background-image: url("../icons/whiteboard.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .videoStreamIcon {
-    background-image: url("../icons/video.png");
-    background-size: cover;
-    background-position: center;
+  background-image: url("../icons/video.png");
+  background-size: cover;
+  background-position: center;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #4b4949;
+  background: #4b4949;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: white;
-    border-radius: 10px;
+  background: white;
+  border-radius: 10px;
 }

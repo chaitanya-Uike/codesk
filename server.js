@@ -12,6 +12,8 @@ const richText = require("rich-text");
 const WebSocket = require("ws");
 const WebSocketJSONStream = require("@teamwork/websocket-json-stream");
 const { v4: uuidv4 } = require("uuid");
+const { RtcTokenBuilder, RtcRole } = require('agora-access-token');
+
 
 // installing mongoDB adapter for shareDB
 const db = require("sharedb-mongo")(process.env.MONGO_URI);
@@ -62,6 +64,26 @@ app.get("/:roomId", (req, res) => {
       );
     }
   });
+
+  app.get("/getToken/:channel", (req, res) => {
+    const channelName = req.params.channel;
+    const uid = getRandInteger(1, 230);
+    const role = RtcRole.PUBLISHER;
+    const expirationTimeInSeconds = 3600 * 24;
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
+
+    const token = RtcTokenBuilder.buildTokenWithUid(process.env.APP_ID, process.env.APP_CERTIFICATE, channelName, uid, role, privilegeExpiredTs);
+
+    res.json({
+      token: token,
+      uid: uid
+    });
+  })
+
+  function getRandInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
   // create a new code document
   const codeDoc = connection.get("code-editor", roomId);

@@ -12,6 +12,12 @@
 
     <link rel="stylesheet" href="css/desk.css" />
 
+    <!-- Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Agora RTC -->
+    <script src="js/AgoraRTC_N-4.8.1.js" type="text/javascript" charset="utf-8"></script>
+
     <!-- snap layouts -->
     <link rel="stylesheet" href="css/snapLayout.css" />
     <script src="js/snapLayout.js"></script>
@@ -44,6 +50,9 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+
+    <!-- video chat -->
+    <link rel="stylesheet" href="css/video_chat.css">
 
     <!-- modules -->
     <script src="js/dist/bundle.js"></script>
@@ -503,7 +512,19 @@
               </div>
               <div class="zoom-level-display-div">100%</div>
             </div>
-            <div id="Video-stream" class="sl-window"></div>
+          </div>
+          <div id="Video-stream" class="sl-window">
+            <div class="video-stream-body">
+              <div class="video-grid"></div>
+            </div>
+            <div id="controls">
+              <button type="button" class="video-control-btn" id="audio-btn" disabled>
+                <i class="material-icons" id="audio_icon">mic</i>
+              </button>
+              <button type="button" class="video-control-btn" id="video-btn" disabled>
+                <i class="material-icons" id="video_icon">videocam</i>
+              </button>
+            </div>
           </div>
         </div>
 
