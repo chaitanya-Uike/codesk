@@ -87,23 +87,18 @@ const drawingPadOptions = {
   },
 };
 
-
-
-
-
-
 const AGORA_APP_ID = "d7881b21fa6d41b4a803fadca983c29e";
 const CHANNEL = window.location.pathname.replace("/", "");
 let TOKEN;
 let UID;
-let audioBtn
-let videoBtn
-let audioIcon
-let videoIcon
+let audioBtn;
+let videoBtn;
+let audioIcon;
+let videoIcon;
 
 const client = AgoraRTC.createClient({
   mode: "rtc",
-  codec: "vp8"
+  codec: "vp8",
 });
 
 // AgoraRTC.setLogLevel(4);
@@ -121,8 +116,8 @@ async function fetchCred() {
 }
 
 async function joinAndDisplayLocalStream() {
-  client.on('user-published', handleUserJoined);
-  client.on('user-left', handleUserLeft);
+  client.on("user-published", handleUserJoined);
+  client.on("user-left", handleUserLeft);
 
   await fetchCred();
 
@@ -136,7 +131,7 @@ async function joinAndDisplayLocalStream() {
     <div class="video-element" id="user-${UID}"></div>
   </div>`;
 
-  document.querySelector('.video-grid').insertAdjacentHTML('beforeend', player);
+  document.querySelector(".video-grid").insertAdjacentHTML("beforeend", player);
   videoTrack.play(`user-${UID}`);
 
   audioBtn.disabled = false;
@@ -150,7 +145,7 @@ async function handleUserJoined(user, mediaType) {
   await client.subscribe(user, mediaType);
 
   if (mediaType === "video") {
-    let player = document.getElementById(`user-container-${user.uid}`)
+    let player = document.getElementById(`user-container-${user.uid}`);
     if (player != null) {
       player.remove();
     }
@@ -160,9 +155,10 @@ async function handleUserJoined(user, mediaType) {
       <div class="video-element" id="user-${user.uid}"></div>
     </div>`;
 
-    document.querySelector('.video-grid').insertAdjacentHTML('beforeend', player);
+    document
+      .querySelector(".video-grid")
+      .insertAdjacentHTML("beforeend", player);
     user.videoTrack.play(`user-${user.uid}`);
-
   }
   if (mediaType === "audio") {
     user.audioTrack.play();
@@ -184,13 +180,12 @@ const videoChatOptions = {
     audioBtn.addEventListener("click", async () => {
       if (audioIcon.innerHTML === "mic_off") {
         audioIcon.innerHTML = "mic";
-        audioBtn.style.backgroundColor = '#3be8b0';
-        audioBtn.style.color = 'black';
-      }
-      else {
+        audioBtn.style.backgroundColor = "#3be8b0";
+        audioBtn.style.color = "black";
+      } else {
         audioIcon.innerHTML = "mic_off";
-        audioBtn.style.backgroundColor = '#e22929';
-        audioBtn.style.color = 'white';
+        audioBtn.style.backgroundColor = "#e22929";
+        audioBtn.style.color = "white";
       }
 
       // Check if audio track exists
@@ -199,25 +194,25 @@ const videoChatOptions = {
       } else {
         await audioTrack.setMuted(true);
       }
-    })
+    });
 
     videoBtn.addEventListener("click", async () => {
       if (videoTrack.enabled) {
         videoIcon.innerHTML = "videocam_off";
-        videoBtn.style.backgroundColor = '#e22929';
-        videoBtn.style.color = 'white';
+        videoBtn.style.backgroundColor = "#e22929";
+        videoBtn.style.color = "white";
         await videoTrack.setEnabled(false);
       } else {
         videoIcon.innerHTML = "videocam";
-        videoBtn.style.backgroundColor = '#3be8b0';
-        videoBtn.style.color = 'black';
+        videoBtn.style.backgroundColor = "#3be8b0";
+        videoBtn.style.color = "black";
         await videoTrack.setEnabled(true);
       }
-    })
+    });
 
-    joinAndDisplayLocalStream()
-  }
-}
+    joinAndDisplayLocalStream();
+  },
+};
 
 snapLayout.createWindow("Text-Editor", textEditorOptions);
 snapLayout.createWindow("Code-Editor", codeEditorOptions);
